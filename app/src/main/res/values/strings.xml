@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Main_W</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Weather App</string>
+    <string name="nav_header_subtitle">developer: Gyul, Soobin, Heeju, Gajee</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_setting">Setting</string>
+
+    <string name="time_view">time_view</string>
+    <string name="temperature">temperature</string>
+    <string name="rain_rate">rain_rate</string>
+
+</resources>
