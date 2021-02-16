@@ -14,6 +14,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.Main_W.NoActionBarMain">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="Theme.Main_W.NoActionBar">
         <item name="android:background">@color/blue</item>
         <item name="windowActionBar">false</item>
