@@ -6,11 +6,11 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Main_W">
+        android:theme="@style/Theme.Main_W.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Main_W.NoActionBar">
+            android:theme="@style/Theme.Main_W.NoActionBarMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
