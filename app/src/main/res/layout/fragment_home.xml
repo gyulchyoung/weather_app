@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#459FE6"
+    android:background="@color/blue"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_gravity="right|top"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
         android:orientation="vertical">
 
         <SeekBar
@@ -48,36 +49,35 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_cat" />
+        android:src="@drawable/ic_magic_cat"  />
 
     <ImageButton
         android:id="@+id/specific_weather"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="#00FFFFFF"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_cloud" />
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_weather" />
 
     <ImageButton
         android:id="@+id/clock"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_margin"
-        android:background="#00FFFFFF"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_clock" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_alarm_clock" />
 
     <ImageButton
         android:id="@+id/help"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="#00FFFFFF"
-        android:scaleType="centerInside"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_help" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

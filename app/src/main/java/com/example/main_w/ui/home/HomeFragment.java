@@ -10,16 +10,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.main_w.HelpDialogFragment;
 import com.example.main_w.MainActivity;
 import com.example.main_w.R;
 import com.example.main_w.help;
 import com.example.main_w.clock;
 import com.example.main_w.specific_weather;
-
 
 public class HomeFragment extends Fragment {
 
@@ -35,8 +36,8 @@ public class HomeFragment extends Fragment {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), help.class);
-                startActivity(intent);
+                DialogFragment helpDialog = new HelpDialogFragment();
+                helpDialog.show(getChildFragmentManager(), HelpDialogFragment.DIALOG_TAG);
             }
         });
 
