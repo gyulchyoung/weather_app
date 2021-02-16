@@ -14,4 +14,9 @@
     <string name="temperature">temperature</string>
     <string name="rain_rate">rain_rate</string>
 
+    <string name="dialog_title">매직고양이가 마법의 구슬로\n날씨를 알려줘요 !</string>
+    <string name="dialog_first">날씨도 못 맞추는 집사를 위해\n마법사 고양이가 나타났어요 !</string>
+    <string name="dialog_second">고양이는 날씨를 알려주는\n마법의 수정구슬을 사용할 수 있답니다.</string>
+    <string name="dialog_third">말풍선은 현재 날씨를,\n고양이의 물건은 미래 날씨를 보여줘요 !</string>
+
 </resources>

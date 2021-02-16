@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DialogText" parent="android:TextAppearance">
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:fontFamily">@font/neo_dgm</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+</resources>
