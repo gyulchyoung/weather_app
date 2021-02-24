@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:gravity="center"
+    android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/gyeonggi"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/gyeong_gi" />
+
+        <RadioButton
+            android:id="@+id/gyeongnam"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/gyeong_nam" />
+
+        <RadioButton
+            android:id="@+id/gyeongbuk"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/gyeong_buk" />
+
+        <RadioButton
+            android:id="@+id/jeonnam"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/jeon_nam" />
+
+        <RadioButton
+            android:id="@+id/jeonbuk"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/jeon_buk" />
+            
+        <RadioButton
+            android:id="@+id/chungnam"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/chung_nam" />
+
+        <RadioButton
+            android:id="@+id/chungbuk"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/chung_buk" />
+
+        <RadioButton
+            android:id="@+id/gangwon"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/gang_won" />
+
+        <RadioButton
+            android:id="@+id/jeju"
+            style="@style/DialogTextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="15dp"
+            android:button="@null"
+            android:textSize="24sp"
+            android:text="@string/jeju" />
+    </LinearLayout>
+</LinearLayout>

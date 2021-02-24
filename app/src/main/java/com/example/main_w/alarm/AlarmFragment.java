@@ -16,8 +16,11 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.main_w.CountryDialogFragment;
 import com.example.main_w.R;
 import java.util.Calendar;
 
@@ -43,8 +46,10 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
 
         Button regBtn=rootView.findViewById(R.id.time_reg_button);
         Button unregBtn = rootView.findViewById(R.id.time_unreg_button);
+        Button locationBtn = rootView.findViewById(R.id.get_location_button);
         regBtn.setOnClickListener(this);
         unregBtn.setOnClickListener(this);
+        locationBtn.setOnClickListener(this);
         return rootView;
     }
 
@@ -76,14 +81,23 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
         alarmManager.cancel(pIntent);
     }
 
+    //지역 설정 dialog 생성
+    public void setLocation(View view){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        DialogFragment countryDialog = new CountryDialogFragment();
+        countryDialog.show(fm, CountryDialogFragment.DIALOG_TAG);
+    }
+
     @Override
     public void onClick(View view) {
 
 
-        if(view.getId()==R.id.time_reg_button)
+        if(view.getId() == R.id.time_reg_button)
             regist(view);
-        else if (view.getId()==R.id.time_unreg_button)
+        else if (view.getId() == R.id.time_unreg_button)
             unregist(view);
+        else if(view.getId() == R.id.get_location_button)
+            setLocation(view);
     }
 
     public void getPermission(){

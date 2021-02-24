@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.main_w.location.LocationDatabase;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.fragment.app.DialogFragment;
@@ -22,6 +24,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+    // location information
+    private String locationCode;
+    private int locationX;
+    private int locationY;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -44,8 +50,12 @@ public class MainActivity extends AppCompatActivity {
         clock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), clock.class);
-                startActivity(intent);
+                //Intent intent = new Intent(view.getContext(), clock.class);
+                //startActivity(intent);
+
+                //데이터가 원활하게 작동하는지 확인하기 위한 임시 토스트 (삭제 예정)
+                String test = locationCode + ", " + String.valueOf(locationX) + ", " + String.valueOf(locationY);
+                Toast.makeText(view.getContext(), test, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -69,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //dialog에서 선택한 도시의 지역 코드, 좌표 등 정보 저장
+    public void setLocationInfo(String code, int axisX, int axisY){
+        locationCode = code;
+        locationX = axisX;
+        locationY = axisY;
     }
 
 }
