@@ -11,6 +11,7 @@ com.example.main_w
   .CountryDialogFragment - 지역 선택 팝업창 (경기도, 경상남도, 등등)
   .HelpDialogFragment - 메인화면 도움말 팝업창
   .MyApplication - 앱 시작 시 필요한 작업 (아직 적용 안 했지만 알림 채널 생성도 여기서 할 예정)
+  .PreferenceManager - 앱을 다시 킬 때마다 위치 정보 초기화되지 않게 데이터 저장
 
 res
 .layout
