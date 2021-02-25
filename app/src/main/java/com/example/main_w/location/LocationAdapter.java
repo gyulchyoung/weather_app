@@ -61,21 +61,16 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.itemVi
                 @Override
                 public void onClick(View view){
                     //db 내에서 문자열 깨짐으로 인해 직접 적용
-                    if(location.id == 78) {
-                        PreferenceManager.setString(view.getContext(),"locationCode", ULLEUNG_CODE);
-                        PreferenceManager.setInt(view.getContext(), "locationX", location.axisX);
-                        PreferenceManager.setInt(view.getContext(), "locationY", location.axisY);
-                    }
-                    else if(location.id == 79) {
-                        PreferenceManager.setString(view.getContext(),"locationCode", DOKDO_CODE);
-                        PreferenceManager.setInt(view.getContext(), "locationX", location.axisX);
-                        PreferenceManager.setInt(view.getContext(), "locationY", location.axisY);
-                    }
-                    else {
-                        PreferenceManager.setString(view.getContext(),"locationCode", location.code);
-                        PreferenceManager.setInt(view.getContext(), "locationX", location.axisX);
-                        PreferenceManager.setInt(view.getContext(), "locationY", location.axisY);
-                    }
+                    if(location.id == 78)
+                        PreferenceManager.setString(view.getContext(),"locationCityCode", ULLEUNG_CODE);
+                    else if(location.id == 79)
+                        PreferenceManager.setString(view.getContext(),"locationCityCode", DOKDO_CODE);
+                    else
+                        PreferenceManager.setString(view.getContext(),"locationCityCode", location.cityCode);
+                    
+                    PreferenceManager.setString(view.getContext(), "locationCountryCode", location.countryCode);
+                    PreferenceManager.setInt(view.getContext(), "locationX", location.axisX);
+                    PreferenceManager.setInt(view.getContext(), "locationY", location.axisY);
 
                     cityDialog.dismiss();
                 }

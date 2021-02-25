@@ -50,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
 
                 //데이터가 원활하게 작동하는지 확인하기 위한 임시 토스트 (삭제 예정)
-                String code = PreferenceManager.getString(view.getContext(), "locationCode");
+                String countryCode = PreferenceManager.getString(view.getContext(), "locationCountryCode");
+                String cityCode = PreferenceManager.getString(view.getContext(), "locationCityCode");
                 int x = PreferenceManager.getInt(view.getContext(), "locationX");
                 int y = PreferenceManager.getInt(view.getContext(), "locationY");
-                String test = code + ", " + String.valueOf(x) + ", " + String.valueOf(y);
+                String test = countryCode + ", " + cityCode + ", " + String.valueOf(x) + ", " + String.valueOf(y);
                 Toast.makeText(view.getContext(), test, Toast.LENGTH_SHORT).show();
             }
         });
