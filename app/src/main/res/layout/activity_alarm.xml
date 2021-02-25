@@ -16,6 +16,33 @@
         android:maxHeight="200dp"
         android:adjustViewBounds="true"
         android:layout_below="@id/bubble" />
+
+    <ImageView
+        android:id="@+id/alarm_snowcat"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignBottom="@id/cat_img"
+        android:layout_alignRight="@id/cat_img"
+        android:layout_marginStart="@dimen/fab_margin"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_snowcat" />
+
+    <ImageView
+        android:id="@+id/alarm_umbrella"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignTop="@id/cat_img"
+        android:layout_alignRight="@id/cat_img"
+        android:layout_marginTop="30dp"
+        android:scaleType="centerInside"
+        android:visibility="invisible"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_umbrella" />
+
     <FrameLayout
         android:id="@+id/bubble"
         android:layout_width="wrap_content"
