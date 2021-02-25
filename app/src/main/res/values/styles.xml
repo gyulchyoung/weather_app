@@ -45,6 +45,70 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="AlarmLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">30dp</item>
+    </style>
+
+    <style name="AlarmBtn" parent="android:TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:fontFamily">@font/neo_dgm</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AlarmTogBtn" parent="android:TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:fontFamily">@font/neo_dgm</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:background">@drawable/repeat_btn_selector</item>
+    </style>
+
+    <style name="AlarmRadio" parent="android:TextAppearance">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableEnd">@drawable/radio_btn_selector</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:fontFamily">@font/neo_dgm</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="AlarmSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:track">@drawable/switch_track_selector</item>
+        <item name="android:thumb">@drawable/switch_thumb</item>
+    </style>
+
+    <style name="AlarmWarning" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/scarlet</item>
+    </style>
+
     <style name="Clear"
         parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>

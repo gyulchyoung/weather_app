@@ -1,6 +1,7 @@
 package com.example.main_w;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.main_w.location.LocationDatabase;
+import com.example.main_w.weather_alarm.AlarmListActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.fragment.app.DialogFragment;
@@ -36,10 +38,6 @@ import java.net.URL;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    // location information
-    private String locationCode;
-    private int locationX;
-    private int locationY;
 
     String[][] arr = new String[15][5];
     Calendar now = Calendar.getInstance();
@@ -70,12 +68,8 @@ public class MainActivity extends AppCompatActivity {
         clock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(view.getContext(), clock.class);
-                //startActivity(intent);
-
-                //데이터가 원활하게 작동하는지 확인하기 위한 임시 토스트 (삭제 예정)
-                String test = locationCode + ", " + String.valueOf(locationX) + ", " + String.valueOf(locationY);
-                Toast.makeText(view.getContext(), test, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), AlarmListActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -83,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         specific_weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int locationX = PreferenceManager.getInt(view.getContext(), "locationX");
+                int locationY = PreferenceManager.getInt(view.getContext(), "locationY");
+
                 Intent intent = new Intent(view.getContext(), specific_weather.class);
                 intent.putExtra("locationX",locationX);
                 intent.putExtra("locationY",locationY);
@@ -254,6 +251,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                int locationX = PreferenceManager.getInt(view.getContext(), "locationX");
+                int locationY = PreferenceManager.getInt(view.getContext(), "locationY");
+
                 if(hour<23){
                     if(locationX ==0)
                         locationX=60;
@@ -292,13 +292,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    //dialog에서 선택한 도시의 지역 코드, 좌표 등 정보 저장
-    public void setLocationInfo(String code, int axisX, int axisY){
-        locationCode = code;
-        locationX = axisX;
-        locationY = axisY;
     }
 
 }

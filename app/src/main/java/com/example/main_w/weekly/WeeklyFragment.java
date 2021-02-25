@@ -108,7 +108,7 @@ public class WeeklyFragment extends Fragment {
 
         initData();
 
-        String tempCode = PreferenceManager.getString(getContext(), "locationCode");
+        String tempCode = PreferenceManager.getString(getContext(), "locationCityCode");
         String weatherCode = PreferenceManager.getString(getContext(), "locationCountryCode");
 
 
