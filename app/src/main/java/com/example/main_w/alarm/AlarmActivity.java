@@ -45,6 +45,8 @@ public class AlarmActivity extends Service {
     int month=now.get(Calendar.MONTH)+1;
     int day=now.get(Calendar.DAY_OF_MONTH);
     int hour=now.get(Calendar.HOUR_OF_DAY);
+    String now_Tem;
+    String now_weather;
     String[][] arr = new String[15][5];
     private int locationX;
     private int locationY;
@@ -94,44 +96,6 @@ public class AlarmActivity extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "AlarmService");
-        if(hour<23){
-            if(locationX ==0)
-                locationX=60;
-            if(locationY == 0)
-                locationY=127;
-
-            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day-1);
-            String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
-                    "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
-                    "numOfRows=225&pageNo=1&base_date=" +
-                    "20210225" +
-                    "&base_time=0200&nx=" +
-                    locationX + //x좌표
-                    "&ny=" +
-                    locationY; //y좌표
-            new ggetXML().execute(url2);
-        }
-        else{
-            if(locationX ==0)
-                locationX=60;
-            if(locationY == 0)
-                locationY=127;
-
-            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day);
-            String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
-                    "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
-                    "numOfRows=225&pageNo=1&base_date=" +
-                    today +
-                    "&base_time=" +
-                    "&nx=" +
-                    locationX +
-                    "&ny=" +
-                    locationY;
-            new ggetXML().execute(url2);
-
-        }
-
         cat_view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -162,14 +126,6 @@ public class AlarmActivity extends Service {
 
 
         return super.onStartCommand(intent, flags, startId);
-    }
-
-    private void setResources() {
-        cat_view.setImageResource(R.drawable.ic_magic_cat);
-        bubble_img.setImageResource(R.drawable.sunny);
-        bubble_weather.setText("바뀐/날씨");
-        bubble_temp.setText("바뀐/온도");
-
     }
     class ggetXML extends AsyncTask<String, Void, String> {
 
@@ -285,30 +241,26 @@ public class AlarmActivity extends Service {
             int k=0;
             for(int num=0;num<24;num=num+3){
                 if(hour>=num && hour<(num+3)){
-                    now_TIME = num;
                     now_T3H = arr[k][2];
                     now_PTY = arr[k][3];
                     now_SKY = arr[k][4];
                 }
                 k++;
             }
+            now_Tem = now_T3H;
 
-            if(now_PTY.equals("0")){
-                view.findViewById(R.id.alarm_umbrella).setVisibility(View.INVISIBLE);
-                view.findViewById(R.id.alarm_snowcat).setVisibility(View.INVISIBLE);
-                bubble_weather.setText("오늘은 날씨가 맑아요!");
+            if(now_PTY.equals("0")) {
+                if (now_SKY.equals("맑음"))
+                    now_weather = "현재 날씨는 맑아요!";
+                else if (now_SKY.equals("구름많음"))
+                    now_weather = "현재 날씨는 구름이 많아요!";
+                else
+                    now_weather = "현재 날씨는 흐려요!";
             }
-            else if(now_PTY.equals("3") || now_PTY.equals("7")){
-                view.findViewById(R.id.alarm_umbrella).setVisibility(View.INVISIBLE);
-                view.findViewById(R.id.alarm_snowcat).setVisibility(View.VISIBLE);
-                bubble_weather.setText("오늘은 눈이 와요!");
-
-            }
-            else{
-                view.findViewById(R.id.alarm_umbrella).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.alarm_snowcat).setVisibility(View.INVISIBLE);
-                bubble_weather.setText("오늘은 비가 와요!");
-            }
+            else if(now_PTY.equals("3") || now_PTY.equals("7"))
+                now_weather = "지금 눈이 와요!";
+            else
+                now_weather = "지금 비가 와요!";
         }
 
         private InputStream downloadUrl(String urlString) throws IOException {
@@ -323,4 +275,12 @@ public class AlarmActivity extends Service {
             return conn.getInputStream();
         }
     }
+    private void setResources() {
+        cat_view.setImageResource(R.drawable.ic_magic_cat);
+        bubble_img.setImageResource(R.drawable.sunny);
+        bubble_weather.setText(now_weather);
+        bubble_temp.setText(now_Tem);
+
+    }
+
 }
