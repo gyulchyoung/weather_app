@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_baseline_wb_sunny_24" />
+                android:src="@drawable/sunny" />
             <TextView
                 android:id="@+id/bubble_temp_view"
                 android:layout_width="wrap_content"

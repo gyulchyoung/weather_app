@@ -19,4 +19,13 @@
     <string name="dialog_second">고양이는 날씨를 알려주는\n마법의 수정구슬을 사용할 수 있답니다.</string>
     <string name="dialog_third">말풍선은 현재 날씨를,\n고양이의 물건은 미래 날씨를 보여줘요 !</string>
 
+    <string-array name="days">
+        <item>월요일</item>
+        <item>화요일</item>
+        <item>수요일</item>
+        <item>목요일</item>
+        <item>금요일</item>
+        <item>토요일</item>
+        <item>일요일</item>
+    </string-array>
 </resources>
