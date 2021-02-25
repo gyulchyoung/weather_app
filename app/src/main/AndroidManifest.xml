@@ -6,8 +6,14 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:icon="@mipmap/ic_weather_app"
+        android:roundIcon="@mipmap/ic_weather_app_round"
         android:name=".MyApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
@@ -24,8 +30,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".help"></activity>
-        <activity android:name=".clock"></activity>
+        <activity
+            android:name=".weather_alarm.AlarmAlertActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:showOnLockScreen="true">
+        </activity>
+        <activity
+            android:name=".weather_alarm.AlarmListActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".specific_weather">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +63,18 @@
             android:exported="true"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW" />
 
-        <receiver android:name=".alarm.AlarmReceiver" />
+        <receiver
+            android:name=".DeviceBootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".weather_alarm.AlarmReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>
