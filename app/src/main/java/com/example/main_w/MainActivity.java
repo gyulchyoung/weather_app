@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 int locationY = PreferenceManager.getInt(view.getContext(), "locationY");
 
                 Intent intent = new Intent(view.getContext(), specific_weather.class);
-                intent.putExtra("locationX",locationX);
-                intent.putExtra("locationY",locationY);
                 startActivity(intent);
             }
         });
@@ -265,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                             "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                             "numOfRows=225&pageNo=1&base_date=" +
                             "20210225" +
-                            "&base_time=0200&nx=" +
+                            "&base_time=2300&nx=" +
                             locationX + //x좌표
                             "&ny=" +
                             locationY; //y좌표
@@ -282,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                             "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                             "numOfRows=225&pageNo=1&base_date=" +
                             today +
-                            "&base_time=" +
+                            "&base_time=0200" +
                             "&nx=" +
                             locationX +
                             "&ny=" +
