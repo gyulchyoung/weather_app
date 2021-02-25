@@ -6,19 +6,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/blue"
     tools:openDrawer="start">
-
-    <include
-        layout="@layout/app_bar_main"
+    <!--    메인뷰 전체 layout  (기존 fragment_home.xml) -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        <!--        상태창 layout      -->
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:max="10"
+                android:progress="7" />
+
+            <SeekBar
+                android:id="@+id/seekBar4"
+                style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:max="10"
+                android:progress="3" />
+
+            <SeekBar
+                android:id="@+id/seekBar3"
+                style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:max="10"
+                android:progress="5" />
+
+        </LinearLayout>
+        <!--        mainview 나머지        -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/drawer_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_dehaze_24"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:id="@+id/cat"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_magic_cat" />
+
+            <ImageButton
+                android:id="@+id/specific_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_weather"
+                android:layout_marginLeft="40dp" />
+
+            <ImageButton
+                android:id="@+id/clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_alarm_clock" />
+
+            <ImageButton
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:background="@android:color/transparent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_help"
+                android:layout_marginRight="45dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--drawer view -->
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        android:background="#D14B35">
+        <!--       고양이 알람 설정 view       -->
+        <fragment
+            android:id="@+id/fragment_a"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:name="com.example.main_w.alarm.AlarmFragment" />
+    </LinearLayout>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
