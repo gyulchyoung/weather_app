@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.main_w.R;
+import com.example.main_w.clock;
+import com.example.main_w.specific_weather;
 
 public class AlarmActivity extends Service {
     String TAG = "TAG+Service";
@@ -24,6 +26,7 @@ public class AlarmActivity extends Service {
     private ImageView bubble_img;
     private TextView bubble_temp;
     private TextView bubble_weather;
+    private View bubble_view;
 
     @Override
     public void onCreate( ) {
@@ -35,6 +38,7 @@ public class AlarmActivity extends Service {
         bubble_img=view.getRootView().findViewById(R.id.bubble_weather_imgView);
         bubble_temp = view.getRootView().findViewById(R.id.bubble_temp_view);
         bubble_weather = view.getRootView().findViewById(R.id.bubble_weather_txt);
+        bubble_view=view.getRootView().findViewById(R.id.bubble);
 
         setResources();
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(
@@ -71,6 +75,26 @@ public class AlarmActivity extends Service {
         cat_view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                stopSelf();
+                return false;
+            }
+        });
+        cat_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent clock = new Intent(getApplicationContext(), com.example.main_w.clock.class);
+                clock.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(clock);
+                stopSelf();
+            }
+        });
+
+        bubble_view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent sp_weather = new Intent(getApplicationContext(), specific_weather.class);
+                sp_weather.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(sp_weather);
                 stopSelf();
                 return false;
             }
