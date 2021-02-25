@@ -19,7 +19,7 @@ public class HelpDialogFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_TITLE, R.style.HelpDialog);
+        setStyle(STYLE_NO_TITLE, R.style.Dialog);
     }
 
     @Override

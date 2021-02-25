@@ -13,7 +13,7 @@
     android:paddingBottom="40dp"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
-    android:background="@drawable/help_dialog_background"
+    android:background="@drawable/dialog_background"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -25,7 +25,7 @@
             android:paddingBottom="25dp"
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
-            style="@style/DialogText"
+            style="@style/DialogTextNormal"
             android:background="@drawable/help_dialog_title"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            style="@style/DialogText"
-            android:background="@color/transparent"
+            style="@style/DialogTextBold"
+            android:background="@android:color/transparent"
             android:textStyle="bold"
             android:textSize="16sp"
             android:text="@string/dialog_first" />
@@ -47,8 +47,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            style="@style/DialogText"
-            android:background="@color/transparent"
+            style="@style/DialogTextNormal"
+            android:background="@android:color/transparent"
             android:textSize="14sp"
             android:text="@string/dialog_second" />
 
@@ -57,8 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            style="@style/DialogText"
-            android:background="@color/transparent"
+            style="@style/DialogTextNormal"
+            android:background="@android:color/transparent"
             android:textSize="14sp"
             android:text="@string/dialog_third" />
     </LinearLayout>

@@ -37,4 +37,14 @@
         android:text="해제"
         android:background="@drawable/button_rd_bd"
         android:textColor="#0D0180"/>
+    <Button
+        android:id="@+id/get_location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginStart="100dp"
+        android:text="지역 설정"
+        android:background="@drawable/button_rd_bd"
+        android:textColor="#0D0180"/>
 </RelativeLayout>
