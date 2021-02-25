@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.main_w.PreferenceManager;
 import com.example.main_w.R;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -42,10 +43,6 @@ public class daily extends Fragment {
         View v = inflater.inflate(R.layout.daily, container, false);
         View view = inflater.inflate(R.layout.weather_item, container, false);
 
-        Bundle bundle = getArguments();
-        String locationX = bundle.getString("locationX");
-        String locationY = bundle.getString("locationY");
-
         TextView timeView = view.findViewById(R.id.time_view);
         TextView temperatureView = view.findViewById(R.id.temparature_view);
         TextView rainrateView = view.findViewById(R.id.rain_rate_view);
@@ -55,6 +52,9 @@ public class daily extends Fragment {
                 arr[a][m] = " ";
             }
         }
+
+        int locationX = PreferenceManager.getInt(getContext(), "locationX");
+        int locationY = PreferenceManager.getInt(getContext(), "locationY");
 
         class ggetXML extends AsyncTask<String, Void, String> {
 
@@ -214,8 +214,9 @@ public class daily extends Fragment {
                     "numOfRows=225&pageNo=1&base_date=" +
                     "20210225" +
                     "&base_time=2300&nx=" +
-                    50+
-                    "&ny=74";
+                    locationX+
+                    "&ny=" +
+                    locationY;
             new ggetXML().execute(url2);
         }
         else{
@@ -224,8 +225,10 @@ public class daily extends Fragment {
                     "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                     "numOfRows=225&pageNo=1&base_date=" +
                     today +
-                    "&base_time=" +
-                    "&nx=55&ny=127";
+                    "&base_time=0200" +
+                    locationX+
+                    "&ny=" +
+                    locationY;
             new ggetXML().execute(url2);
         }
         return v;

@@ -23,25 +23,9 @@ public class specific_weather extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.specific_weather);
 
-//        FragmentManager manager = getSupportFragmentManager();
-//        dailyFragment = (daily) manager.findFragmentById(R.id.fragment);
-//        weeklyFragment = (WeeklyFragment) manager.findFragmentById(R.id.weekly_weather);
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        String locationX = data.getStringExtra("locationX");
-        String locationY = data.getStringExtra("locationY");
-
-        Bundle bundle = new Bundle();
-        bundle.putString("locationX",locationX);
-        bundle.putString("locationY",locationY);
-
-        daily dailyFragment = new daily();
-        dailyFragment.setArguments(bundle);
+        FragmentManager manager = getSupportFragmentManager();
+        dailyFragment = (daily) manager.findFragmentById(R.id.fragment);
+        weeklyFragment = (WeeklyFragment) manager.findFragmentById(R.id.weekly_weather);
 
     }
 }
