@@ -17,8 +17,11 @@ public class Location {
     @ColumnInfo(name = "city")
     public String city;
 
-    @ColumnInfo(name = "code")
-    public String code;
+    @ColumnInfo(name = "country_code")
+    public String countryCode;
+
+    @ColumnInfo(name = "city_code")
+    public String cityCode;
 
     @NonNull
     @ColumnInfo(name = "axisX")
