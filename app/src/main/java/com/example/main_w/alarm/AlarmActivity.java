@@ -17,8 +17,8 @@ import androidx.annotation.Nullable;
 
 import com.example.main_w.PreferenceManager;
 import com.example.main_w.R;
-import com.example.main_w.clock;
 import com.example.main_w.specific_weather;
+import com.example.main_w.weather_alarm.AlarmListActivity;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -142,7 +142,7 @@ public class AlarmActivity extends Service {
         cat_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent clock = new Intent(getApplicationContext(), com.example.main_w.clock.class);
+                Intent clock = new Intent(getApplicationContext(), AlarmListActivity.class);
                 clock.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(clock);
                 stopSelf();

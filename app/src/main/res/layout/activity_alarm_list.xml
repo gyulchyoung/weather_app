@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alarm_list_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    tools:context=".weather_alarm.AlarmListActivity"
+    app:umanoDragView="@id/drag_view"
+    app:umanoPanelHeight="0dp"
+    app:umanoOverlay="true"
+    app:umanoParallaxOffset="0dp"
+    app:umanoShadowHeight="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/delete"
+                style="@style/AlarmBtn"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:onClick="clickDelete"
+                android:text="@string/alarm_delete" />
+
+            <Button
+                android:id="@+id/done"
+                style="@style/AlarmBtn"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:onClick="clickDone"
+                android:visibility="gone"
+                android:text="@string/alarm_done" />
+
+            <Button
+                android:id="@+id/add"
+                style="@style/AlarmBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:onClick="clickAdd"
+                android:text="@string/alarm_add" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scrollbars="none"   
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/layout_list_item" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/drag_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+        <include layout="@layout/layout_set_alarm" />
+    </LinearLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
