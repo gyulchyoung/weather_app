@@ -24,8 +24,10 @@ import com.example.main_w.weekly.weather_model.WeeklyModel_weather;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLDecoder;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -42,6 +44,7 @@ public class WeeklyFragment extends Fragment {
     String weather;
     WeeklyDayWeatherData data;
     String[] dayarr;
+    int day;
 
 
 
@@ -57,14 +60,41 @@ public class WeeklyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.weekly_recycler, container, false);
 
-        System.out.println(API_KEY);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE,-1 );  // 오늘 날짜에서 하루를 뺌.
-        String date = sdf.format(calendar.getTime());
-        //val now: Long = System.currentTimeMillis()
+        SimpleDateFormat time_f = new SimpleDateFormat("HH:mm:ss", Locale.KOREA);
+        String now_string = time_f.format(calendar.getTime());
+        Date now_date = null;
+        try {
+            now_date = time_f.parse(now_string);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String sixAMstring = "06:00:00";
+        Date sixAM = null;
+        try {
+            sixAM = time_f.parse(sixAMstring);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String set_time="0600";
+        SimpleDateFormat date_f = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
+        if (now_date.before(sixAM)) {
+            calendar.add(Calendar.DATE, -1 );  // 오늘 날짜에서 하루를 뺌.
+            set_time="1800";
+        }
+        String date = date_f.format(calendar.getTime());
+
+        day = calendar.get(Calendar.DAY_OF_WEEK);
+
+
         System.out.println(date);
+        System.out.println(now_string);
+        System.out.println(sixAMstring);
+
+
 
         Resources resources=getResources();
         dayarr = resources.getStringArray(R.array.days);
@@ -78,12 +108,13 @@ public class WeeklyFragment extends Fragment {
         initData();
 
 
+
         Call<WeeklyModel_weather> getWeatherInstance = weeklyRetrofitFactory_weather.getWeekly_weatherApi()
-                .getList(API_KEY, "1", "11B00000", date+"1800", "JSON");//하루전꺼 조사해서 3,4,5,6이면 당일기준 2,3,4,5 시간수정
+                .getList(API_KEY, "1", "11B00000", date+set_time, "JSON");//하루전꺼 조사해서 3,4,5,6이면 당일기준 2,3,4,5 시간수정
         getWeatherInstance.enqueue(weeklyWeatherCallback);
 
         Call<WeeklyModel_Temp> getTempInstance = weeklyRetrofitFactory_temp.getWeekly_tempApi()
-                .getList(API_KEY, "1", "11B10101", date + "1800", "JSON");
+                .getList(API_KEY, "1", "11B10101", date + set_time, "JSON");
         getTempInstance.enqueue(weeklyTempCallback);
         try {
             Thread.sleep(500);
@@ -105,7 +136,7 @@ public class WeeklyFragment extends Fragment {
             Item item = response.body().getResponse().getBody().getItems().getItem()[0];
             System.out.println(item);
 
-            int day=6;
+            day-=1;
             for(int i = 0; i<5; i++)
                 setData(day,i,item);
         }
@@ -164,7 +195,7 @@ public class WeeklyFragment extends Fragment {
     }
 
     private void setData(int day,int i, Item item) {
-        adapter.setDayData(i, dayarr[(day+i+2)%7]);
+        adapter.setDayData(i, dayarr[(day+i+3)%7]);
         adapter.setRain_prob(i, item.getRain_prob(i));
         String weather = item.getWeather(i);
         if(weather.equals("맑음")) {

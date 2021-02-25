@@ -20,12 +20,12 @@
     <string name="dialog_third">말풍선은 현재 날씨를,\n고양이의 물건은 미래 날씨를 보여줘요 !</string>
 
     <string-array name="days">
+        <item>일요일</item>
         <item>월요일</item>
         <item>화요일</item>
         <item>수요일</item>
         <item>목요일</item>
         <item>금요일</item>
         <item>토요일</item>
-        <item>일요일</item>
     </string-array>
 </resources>
