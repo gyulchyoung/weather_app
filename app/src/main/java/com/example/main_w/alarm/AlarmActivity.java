@@ -82,7 +82,7 @@ public class AlarmActivity extends Service {
 
     private void setResources() {
         cat_view.setImageResource(R.drawable.ic_magic_cat);
-        bubble_img.setImageResource(R.drawable.ic_baseline_wb_sunny_24);
+        bubble_img.setImageResource(R.drawable.sunny);
         bubble_weather.setText("바뀐/날씨");
         bubble_temp.setText("바뀐/온도");
 

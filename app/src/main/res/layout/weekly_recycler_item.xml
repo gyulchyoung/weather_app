@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="83dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="3dp"
+        android:background="#232196F3">
+
+        <TextView
+            android:id="@+id/day_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="화요일"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_weight="2"/>
+        <ImageView
+            android:id="@+id/weather_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/sunny"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+
+            android:layout_weight="2"/>
+        <TextView
+            android:id="@+id/weather_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="맑음"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_weight="1.5"/>
+        <TextView
+            android:id="@+id/temp_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-3/-13"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_weight="1"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/rain_prob_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxHeight="18dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/item_rain_prop" />
+            <TextView
+                android:id="@+id/rain_prob_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:layout_toRightOf="@+id/rain_prob_img"
+                android:layout_alignBaseline="@+id/rain_prob_img"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:layout_weight="1"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
