@@ -42,6 +42,10 @@ public class daily extends Fragment {
         View v = inflater.inflate(R.layout.daily, container, false);
         View view = inflater.inflate(R.layout.weather_item, container, false);
 
+        Bundle bundle = getArguments();
+        String locationX = bundle.getString("locationX");
+        String locationY = bundle.getString("locationY");
+
         TextView timeView = view.findViewById(R.id.time_view);
         TextView temperatureView = view.findViewById(R.id.temparature_view);
         TextView rainrateView = view.findViewById(R.id.rain_rate_view);
@@ -175,16 +179,16 @@ public class daily extends Fragment {
 
                     if(PTY1.equals("0")) {
                         if (arr[a][4].equals("맑음"))
-                            adapter.addItem(arr[a][2] + "도", t + "시", arr[a][4], R.drawable.ic_sun);
+                            adapter.addItem(arr[a][2] + "도", t + "시", arr[a][4], R.drawable.sunny);
                         else if (arr[a][4].equals("구름많음"))
-                            adapter.addItem(arr[a][2] + "도", t + "시", arr[a][4], R.drawable.ic_sun_cloud);
+                            adapter.addItem(arr[a][2] + "도", t + "시", arr[a][4], R.drawable.sun_cloud);
                         else
-                            adapter.addItem(arr[a][2] + "도", t + "시", arr[a][4], R.drawable.ic_cloud);
+                            adapter.addItem(arr[a][2] + "도", t + "시", arr[a][4], R.drawable.cloud);
                     }
                     else if(PTY1.equals("3") || PTY1.equals("7"))
-                        adapter.addItem(arr[a][2] + "도", t + "시", arr[a][3], R.drawable.ic_snow);
+                        adapter.addItem(arr[a][2] + "도", t + "시", arr[a][3], R.drawable.snow);
                     else
-                        adapter.addItem(arr[a][2] + "도", t + "시", arr[a][3], R.drawable.ic_rain);
+                        adapter.addItem(arr[a][2] + "도", t + "시", arr[a][3], R.drawable.rain);
 
                     t=(t+3)%24;
                 }

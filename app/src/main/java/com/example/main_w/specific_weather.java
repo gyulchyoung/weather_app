@@ -40,7 +40,8 @@ public class specific_weather extends AppCompatActivity {
         bundle.putString("locationX",locationX);
         bundle.putString("locationY",locationY);
 
-        //daily.setArguments(bundle);
+        daily dailyFragment = new daily();
+        dailyFragment.setArguments(bundle);
 
     }
 }
