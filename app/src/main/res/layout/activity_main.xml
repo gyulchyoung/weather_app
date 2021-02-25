@@ -14,45 +14,17 @@
         android:layout_height="match_parent">
 
         <!--        상태창 layout      -->
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
-            android:orientation="vertical"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="15dp">
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                style="@android:style/Widget.DeviceDefault.Light.SeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:max="10"
-                android:progress="7" />
-
-            <SeekBar
-                android:id="@+id/seekBar4"
-                style="@android:style/Widget.DeviceDefault.Light.SeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:max="10"
-                android:progress="3" />
-
-            <SeekBar
-                android:id="@+id/seekBar3"
-                style="@android:style/Widget.DeviceDefault.Light.SeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:max="10"
-                android:progress="5" />
-
-        </LinearLayout>
         <!--        mainview 나머지        -->
+        <Button
+            android:id="@+id/F5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="#00BCD4"
+            android:text="새로고침" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -70,7 +42,7 @@
             <ImageView
                 android:id="@+id/cat"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="350dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_magic_cat" />
 
@@ -107,6 +79,35 @@
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_help"
                 android:layout_marginRight="45dp" />
+
+            <ImageView
+                android:id="@+id/snowcat"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_alignBottom="@id/cat"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:background="#00FFFFFF"
+                android:scaleType="centerInside"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ic_snowcat" />
+
+            <ImageView
+                android:id="@+id/umbrella"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_alignTop="@id/cat"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:scaleType="centerInside"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ic_umbrella" />
 
         </RelativeLayout>
     </RelativeLayout>

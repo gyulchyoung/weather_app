@@ -1,5 +1,6 @@
 package com.example.main_w;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -25,6 +26,21 @@ public class specific_weather extends AppCompatActivity {
 //        FragmentManager manager = getSupportFragmentManager();
 //        dailyFragment = (daily) manager.findFragmentById(R.id.fragment);
 //        weeklyFragment = (WeeklyFragment) manager.findFragmentById(R.id.weekly_weather);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        String locationX = data.getStringExtra("locationX");
+        String locationY = data.getStringExtra("locationY");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("locationX",locationX);
+        bundle.putString("locationY",locationY);
+
+        //daily.setArguments(bundle);
 
     }
 }
