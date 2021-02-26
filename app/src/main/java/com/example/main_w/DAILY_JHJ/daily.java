@@ -37,6 +37,8 @@ public class daily extends Fragment {
     int month=now.get(Calendar.MONTH)+1;
     int day=now.get(Calendar.DAY_OF_MONTH);
     int hour=now.get(Calendar.HOUR_OF_DAY);
+    String[] TMN_value = new String[2];
+    String[] TMX_value = new String[2];
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class daily extends Fragment {
                     Boolean T3H=Boolean.FALSE;
                     Boolean SKY=Boolean.FALSE;
                     Boolean PTY=Boolean.FALSE;
+                    Boolean TMX=Boolean.FALSE;
+                    Boolean TMN=Boolean.FALSE;
 
                     Boolean category = Boolean.FALSE;
                     Boolean fcstTime = Boolean.FALSE;
@@ -107,6 +111,12 @@ public class daily extends Fragment {
                                     else if(parser.getText().equals("PTY")) {
                                         PTY = Boolean.TRUE;
                                     }
+                                    else if(parser.getText().equals("TMX")){
+                                        TMX = Boolean.TRUE;
+                                    }
+                                    else if(parser.getText().equals("TMN")){
+                                        TMN = Boolean.TRUE;
+                                    }
                                     category =Boolean.FALSE;
                                 }
                                 else if(fcstDate) {
@@ -130,6 +140,16 @@ public class daily extends Fragment {
                                     else if(SKY) {
                                         arr[i][4]=text;
                                         SKY=Boolean.FALSE;
+                                    }
+                                    else if(TMN){
+                                        TMN_value[0]=text;
+                                        TMN = Boolean.FALSE;
+                                        Log.d("tm",TMN_value[0]);
+                                    }
+                                    else if(TMX){
+                                        TMX_value[0]=text;
+                                        TMX = Boolean.FALSE;
+                                        Log.d("tm",TMX_value[0]);
                                     }
                                     fcstValue = Boolean.FALSE;
                                 }
