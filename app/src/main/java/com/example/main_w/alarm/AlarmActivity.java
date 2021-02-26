@@ -63,6 +63,8 @@ public class AlarmActivity extends Service {
         bubble_weather = view.getRootView().findViewById(R.id.bubble_weather_txt);
         bubble_view=view.getRootView().findViewById(R.id.bubble);
 
+        cat_view.setImageResource(R.drawable.ic_magic_cat);
+        bubble_img.setImageResource(R.drawable.sunny);
 
         locationX= PreferenceManager.getInt(getApplicationContext(), "locationX");
         locationY=PreferenceManager.getInt(getApplicationContext(), "locationY");
@@ -248,19 +250,31 @@ public class AlarmActivity extends Service {
                 k++;
             }
             now_Tem = now_T3H;
+            bubble_temp.setText(now_Tem);
 
             if(now_PTY.equals("0")) {
-                if (now_SKY.equals("맑음"))
+                if (now_SKY.equals("맑음")) {
                     now_weather = "현재 날씨는 맑아요!";
-                else if (now_SKY.equals("구름많음"))
+                    bubble_img.setImageResource(R.drawable.sunny);
+                }
+                else if (now_SKY.equals("구름많음")) {
                     now_weather = "현재 날씨는 구름이 많아요!";
-                else
+                    bubble_img.setImageResource(R.drawable.cloud);
+                }
+                else {
                     now_weather = "현재 날씨는 흐려요!";
+                    bubble_img.setImageResource(R.drawable.sun_cloud);
+                }
             }
-            else if(now_PTY.equals("3") || now_PTY.equals("7"))
+            else if(now_PTY.equals("3") || now_PTY.equals("7")) {
                 now_weather = "지금 눈이 와요!";
-            else
+                bubble_img.setImageResource(R.drawable.snow);
+            }
+            else {
                 now_weather = "지금 비가 와요!";
+                bubble_img.setImageResource(R.drawable.rain);
+            }
+            bubble_weather.setText(now_weather);
         }
 
         private InputStream downloadUrl(String urlString) throws IOException {
@@ -276,10 +290,47 @@ public class AlarmActivity extends Service {
         }
     }
     private void setResources() {
-        cat_view.setImageResource(R.drawable.ic_magic_cat);
-        bubble_img.setImageResource(R.drawable.sunny);
-        bubble_weather.setText(now_weather);
-        bubble_temp.setText(now_Tem);
+        if(hour<23){
+            if(locationX ==0)
+                locationX=60;
+            if(locationY == 0)
+                locationY=127;
+
+            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day-1);
+            String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
+                    "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
+                    "numOfRows=225&pageNo=1&base_date=" +
+                    "20210225" +
+                    "&base_time=2300&nx=" +
+                    locationX + //x좌표
+                    "&ny=" +
+                    locationY; //y좌표
+            new ggetXML().execute(url2);
+        }
+        else{
+            if(locationX ==0)
+                locationX=60;
+            if(locationY == 0)
+                locationY=127;
+
+            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day);
+            String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
+                    "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
+                    "numOfRows=225&pageNo=1&base_date=" +
+                    today +
+                    "&base_time=0200" +
+                    "&nx=" +
+                    locationX +
+                    "&ny=" +
+                    locationY;
+            new ggetXML().execute(url2);
+
+        }
+
+//        cat_view.setImageResource(R.drawable.ic_magic_cat);
+//        bubble_img.setImageResource(R.drawable.sunny);
+//        bubble_weather.setText(now_weather);
+//        bubble_temp.setText(now_Tem);
 
     }
 
