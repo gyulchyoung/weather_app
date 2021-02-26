@@ -6,7 +6,7 @@
     android:layout_width="300dp"
     android:layout_height="match_parent"
     tools:context=".alarm.AlarmFragment"
-    android:background="@color/scarlet">
+    android:background="@color/blue">
 
     <TimePicker
         android:id="@+id/main_alarm_timepicker"
