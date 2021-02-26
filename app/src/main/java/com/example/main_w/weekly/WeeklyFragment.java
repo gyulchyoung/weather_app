@@ -85,6 +85,7 @@ public class WeeklyFragment extends Fragment {
         if (now_date.before(sixAM)) {
             calendar.add(Calendar.DATE, -1 );  // 오늘 날짜에서 하루를 뺌.
             set_time="1800";
+            day++;
         }
         String date = date_f.format(calendar.getTime());
 
@@ -120,7 +121,7 @@ public class WeeklyFragment extends Fragment {
                 .getList(API_KEY, "1", tempCode, date + set_time, "JSON");
         getTempInstance.enqueue(weeklyTempCallback);
         try {
-            Thread.sleep(500);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
