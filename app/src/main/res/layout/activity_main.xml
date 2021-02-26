@@ -118,21 +118,21 @@
 
             </RelativeLayout>
         </RelativeLayout>
-
-        <!--drawer view -->
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="start"
-            android:background="#D14B35">
-            <!--       고양이 알람 설정 view       -->
-            <fragment
-                android:id="@+id/fragment_a"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:name="com.example.main_w.alarm.AlarmFragment" />
-        </LinearLayout>
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <!--drawer view -->
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:background="@color/blue">
+        <!--       고양이 알람 설정 view       -->
+        <fragment
+            android:id="@+id/fragment_a"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:name="com.example.main_w.alarm.AlarmFragment" />
+    </LinearLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>
