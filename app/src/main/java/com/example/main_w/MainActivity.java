@@ -26,6 +26,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -38,6 +39,9 @@ import java.net.URL;
 import java.util.Calendar;
 
 public class MainActivity<status> extends AppCompatActivity {
+    // location info
+    private int locationX;
+    private int locationY;
 
     String[][] arr = new String[15][5];
     Calendar now = Calendar.getInstance();
@@ -206,6 +210,14 @@ public class MainActivity<status> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SwipeRefreshLayout mainSwipe = (SwipeRefreshLayout) findViewById(R.id.main_swipe);
+        mainSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+        });
 
         ImageButton help = findViewById(R.id.help);
         help.setOnClickListener(new View.OnClickListener() {
