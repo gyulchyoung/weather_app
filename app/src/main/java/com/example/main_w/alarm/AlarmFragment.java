@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
@@ -44,9 +45,9 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
 
         getPermission();
 
-        Button regBtn=rootView.findViewById(R.id.time_reg_button);
-        Button unregBtn = rootView.findViewById(R.id.time_unreg_button);
-        Button locationBtn = rootView.findViewById(R.id.get_location_button);
+        TextView regBtn=rootView.findViewById(R.id.time_reg_button);
+        TextView unregBtn = rootView.findViewById(R.id.time_unreg_button);
+        TextView locationBtn = rootView.findViewById(R.id.get_location_button);
         regBtn.setOnClickListener(this);
         unregBtn.setOnClickListener(this);
         locationBtn.setOnClickListener(this);

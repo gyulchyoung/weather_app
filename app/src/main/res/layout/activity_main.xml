@@ -8,124 +8,131 @@
     android:fitsSystemWindows="true"
     android:background="@color/blue"
     tools:openDrawer="start">
-    <!--    메인뷰 전체 layout  (기존 fragment_home.xml) -->
-    <RelativeLayout
+
+    <!--    드래그 후 새로고침 layout   -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/main_swipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--        상태창 layout      -->
-        <!--        mainview 나머지        -->
-        <Button
-            android:id="@+id/F5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="30dp"
-            android:backgroundTint="#00BCD4"
-            android:text="새로고침" />
-
+        <!--    메인뷰 전체 layout  (기존 fragment_home.xml) -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/drawer_btn"
+            <!--        상태창 layout      -->
+            <!--        mainview 나머지        -->
+            <Button
+                android:id="@+id/F5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_dehaze_24"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="#00BCD4"
+                android:text="새로고침" />
 
-            <ImageView
-                android:id="@+id/cat"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_magic_cat" />
+                android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/specific_weather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginBottom="@dimen/fab_margin"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_weather"
-                android:layout_marginLeft="40dp" />
+                <ImageView
+                    android:id="@+id/drawer_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_dehaze_24"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"/>
 
-            <ImageButton
-                android:id="@+id/clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_alarm_clock" />
+                <ImageView
+                    android:id="@+id/cat"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_magic_cat" />
 
-            <ImageButton
-                android:id="@+id/help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="@dimen/fab_margin"
-                android:background="@android:color/transparent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_help"
-                android:layout_marginRight="45dp" />
+                <ImageButton
+                    android:id="@+id/specific_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="@dimen/fab_margin"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_weather"
+                    android:layout_marginLeft="40dp" />
 
-            <ImageView
-                android:id="@+id/snowcat"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_alignBottom="@id/cat"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="@dimen/fab_margin"
-                android:layout_marginLeft="@dimen/fab_margin"
-                android:layout_marginTop="@dimen/fab_margin"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:background="#00FFFFFF"
-                android:scaleType="centerInside"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_snowcat" />
+                <ImageButton
+                    android:id="@+id/clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_alarm_clock" />
 
-            <ImageView
-                android:id="@+id/umbrella"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_alignTop="@id/cat"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:scaleType="centerInside"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_umbrella" />
+                <ImageButton
+                    android:id="@+id/help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="45dp"
+                    android:layout_marginBottom="@dimen/fab_margin"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_help"
+                    android:layout_marginRight="45dp" />
 
+                <ImageView
+                    android:id="@+id/snowcat"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignBottom="@id/cat"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="@dimen/fab_margin"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="#00FFFFFF"
+                    android:scaleType="centerInside"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/ic_snowcat" />
+
+                <ImageView
+                    android:id="@+id/umbrella"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignTop="@id/cat"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:scaleType="centerInside"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/ic_umbrella" />
+
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
 
-    <!--drawer view -->
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="start"
-        android:background="#D14B35">
-        <!--       고양이 알람 설정 view       -->
-        <fragment
-            android:id="@+id/fragment_a"
+        <!--drawer view -->
+        <LinearLayout
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:name="com.example.main_w.alarm.AlarmFragment" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start"
+            android:background="#D14B35">
+            <!--       고양이 알람 설정 view       -->
+            <fragment
+                android:id="@+id/fragment_a"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:name="com.example.main_w.alarm.AlarmFragment" />
+        </LinearLayout>
 
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
