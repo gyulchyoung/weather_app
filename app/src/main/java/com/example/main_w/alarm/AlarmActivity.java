@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.Random;
 
 public class AlarmActivity extends Service {
     String TAG = "TAG+Service";
@@ -39,6 +40,8 @@ public class AlarmActivity extends Service {
     private TextView bubble_temp;
     private TextView bubble_weather;
     private View bubble_view;
+    private ImageView alarm_snowcat;
+    private ImageView alarm_umbrella;
 
     Calendar now = Calendar.getInstance();
     int year=now.get(Calendar.YEAR);
@@ -50,6 +53,8 @@ public class AlarmActivity extends Service {
     String[][] arr = new String[15][5];
     private int locationX;
     private int locationY;
+    String[] TMN_value = new String[2];
+    String[] TMX_value = new String[2];
 
     @Override
     public void onCreate( ) {
@@ -62,6 +67,8 @@ public class AlarmActivity extends Service {
         bubble_temp = view.getRootView().findViewById(R.id.bubble_temp_view);
         bubble_weather = view.getRootView().findViewById(R.id.bubble_weather_txt);
         bubble_view=view.getRootView().findViewById(R.id.bubble);
+        alarm_snowcat = view.getRootView().findViewById(R.id.alarm_snowcat);
+        alarm_umbrella=view.getRootView().findViewById(R.id.alarm_umbrella);
 
         cat_view.setImageResource(R.drawable.ic_magic_cat);
         bubble_img.setImageResource(R.drawable.sunny);
@@ -138,10 +145,13 @@ public class AlarmActivity extends Service {
                         arr[n][l]="0";
 
                 int i=0;
+                int k=0;
                 String text = null;
                 Boolean T3H=Boolean.FALSE;
                 Boolean SKY=Boolean.FALSE;
                 Boolean PTY=Boolean.FALSE;
+                Boolean TMX=Boolean.FALSE;
+                Boolean TMN=Boolean.FALSE;
 
                 Boolean category = Boolean.FALSE;
                 Boolean fcstTime = Boolean.FALSE;
@@ -183,6 +193,12 @@ public class AlarmActivity extends Service {
                                 else if(parser.getText().equals("PTY")) {
                                     PTY = Boolean.TRUE;
                                 }
+                                else if(parser.getText().equals("TMX")){
+                                    TMX = Boolean.TRUE;
+                                }
+                                else if(parser.getText().equals("TMN")){
+                                    TMN = Boolean.TRUE;
+                                }
                                 category =Boolean.FALSE;
                             }
                             else if(fcstDate) {
@@ -206,6 +222,15 @@ public class AlarmActivity extends Service {
                                 else if(SKY) {
                                     arr[i][4]=text;
                                     SKY=Boolean.FALSE;
+                                }
+                                else if(TMN){
+                                    TMN_value[k]=text;
+                                    TMN = Boolean.FALSE;
+                                }
+                                else if(TMX){
+                                    TMX_value[k]=text;
+                                    TMX = Boolean.FALSE;
+                                    k++;
                                 }
                                 fcstValue = Boolean.FALSE;
                             }
@@ -235,6 +260,8 @@ public class AlarmActivity extends Service {
             super.onPostExecute(s);
             int t=3;
 
+            Boolean SNOW=Boolean.FALSE;
+            Boolean RAIN=Boolean.FALSE;
             int now_TIME=hour;
             String now_T3H="0";
             String now_PTY="0";
@@ -275,6 +302,32 @@ public class AlarmActivity extends Service {
                 bubble_img.setImageResource(R.drawable.rain);
             }
             bubble_weather.setText(now_weather);
+
+            for(int u = (hour/3)-1;u<7;hour++){
+                if(u<0)
+                    continue;
+                if(arr[u][4].equals("1"))
+                    continue;
+                else{
+                    if(arr[u][3].equals("0"))
+                        continue;
+                    else if(arr[u][3].equals("3") || arr[u][3].equals("7"))
+                        SNOW = Boolean.TRUE;
+                    else
+                        RAIN = Boolean.TRUE;
+                }
+
+                if(SNOW){ //눈
+                    alarm_umbrella.setVisibility(View.INVISIBLE);
+                    alarm_snowcat.setVisibility(View.VISIBLE);
+                    SNOW = Boolean.FALSE;
+                }
+                else if(RAIN){ //비
+                    alarm_umbrella.setVisibility(View.VISIBLE);
+                    alarm_snowcat.setVisibility(View.INVISIBLE);
+                    RAIN = Boolean.FALSE;
+                }
+            }
         }
 
         private InputStream downloadUrl(String urlString) throws IOException {
