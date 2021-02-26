@@ -70,12 +70,14 @@ public class AlarmActivity extends Service {
         alarm_snowcat = view.getRootView().findViewById(R.id.alarm_snowcat);
         alarm_umbrella=view.getRootView().findViewById(R.id.alarm_umbrella);
 
-        cat_view.setImageResource(R.drawable.ic_magic_cat);
-        bubble_img.setImageResource(R.drawable.sunny);
+//      cat_view.setImageResource(R.drawable.ic_magic_cat);
+        bubble_img.setImageResource(R.drawable.snow);
 
         locationX= PreferenceManager.getInt(getApplicationContext(), "locationX");
         locationY=PreferenceManager.getInt(getApplicationContext(), "locationY");
+
         setResources();
+
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -105,6 +107,11 @@ public class AlarmActivity extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+//        bubble_weather.setText("어쩌구");
+//        bubble_temp.setText("저쩌구");
+
         cat_view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -112,6 +119,7 @@ public class AlarmActivity extends Service {
                 return false;
             }
         });
+
         cat_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,6 +141,7 @@ public class AlarmActivity extends Service {
             }
         });
 
+//        setResources();
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -277,7 +286,7 @@ public class AlarmActivity extends Service {
                 k++;
             }
             now_Tem = now_T3H;
-            bubble_temp.setText(now_Tem);
+            bubble_temp.setText("기온 "+TMX_value[0]+"/"+TMN_value[0]);
 
             if(now_PTY.equals("0")) {
                 if (now_SKY.equals("맑음")) {
@@ -303,31 +312,31 @@ public class AlarmActivity extends Service {
             }
             bubble_weather.setText(now_weather);
 
-            for(int u = (hour/3)-1;u<7;hour++){
-                if(u<0)
-                    continue;
-                if(arr[u][4].equals("1"))
-                    continue;
-                else{
-                    if(arr[u][3].equals("0"))
-                        continue;
-                    else if(arr[u][3].equals("3") || arr[u][3].equals("7"))
-                        SNOW = Boolean.TRUE;
-                    else
-                        RAIN = Boolean.TRUE;
-                }
-
-                if(SNOW){ //눈
-                    alarm_umbrella.setVisibility(View.INVISIBLE);
-                    alarm_snowcat.setVisibility(View.VISIBLE);
-                    SNOW = Boolean.FALSE;
-                }
-                else if(RAIN){ //비
-                    alarm_umbrella.setVisibility(View.VISIBLE);
-                    alarm_snowcat.setVisibility(View.INVISIBLE);
-                    RAIN = Boolean.FALSE;
-                }
-            }
+//            for(int u = (hour/3)-1;u<7;hour++){
+//                if(u<0)
+//                    continue;
+//                if(arr[u][4].equals("1"))
+//                    continue;
+//                else{
+//                    if(arr[u][3].equals("0"))
+//                        continue;
+//                    else if(arr[u][3].equals("3") || arr[u][3].equals("7"))
+//                        SNOW = Boolean.TRUE;
+//                    else
+//                        RAIN = Boolean.TRUE;
+//                }
+//
+//                if(SNOW){ //눈
+//                    alarm_umbrella.setVisibility(View.INVISIBLE);
+//                    alarm_snowcat.setVisibility(View.VISIBLE);
+//                    SNOW = Boolean.FALSE;
+//                }
+//                else if(RAIN){ //비
+//                    alarm_umbrella.setVisibility(View.VISIBLE);
+//                    alarm_snowcat.setVisibility(View.INVISIBLE);
+//                    RAIN = Boolean.FALSE;
+//                }
+//            }
         }
 
         private InputStream downloadUrl(String urlString) throws IOException {
