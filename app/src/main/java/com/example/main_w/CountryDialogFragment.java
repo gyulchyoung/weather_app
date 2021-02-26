@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -14,15 +14,15 @@ import androidx.fragment.app.FragmentManager;
 
 public class CountryDialogFragment extends DialogFragment implements View.OnClickListener{
     public static String DIALOG_TAG = "countryDialog";
-    private RadioButton gyeonggi;
-    private RadioButton gyeongnam;
-    private RadioButton gyeongbuk;
-    private RadioButton jeonnam;
-    private RadioButton jeonbuk;
-    private RadioButton chungnam;
-    private RadioButton chungbuk;
-    private RadioButton gangwon;
-    private RadioButton jeju;
+    private TextView gyeonggi;
+    private TextView gyeongnam;
+    private TextView gyeongbuk;
+    private TextView jeonnam;
+    private TextView jeonbuk;
+    private TextView chungnam;
+    private TextView chungbuk;
+    private TextView gangwon;
+    private TextView jeju;
 
     private String country;
     private boolean checked;
@@ -39,15 +39,15 @@ public class CountryDialogFragment extends DialogFragment implements View.OnClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dialog_country, container, false);
 
-        gyeonggi = (RadioButton) view.findViewById(R.id.gyeonggi);
-        gyeongnam = (RadioButton) view.findViewById(R.id.gyeongnam);
-        gyeongbuk = (RadioButton) view.findViewById(R.id.gyeongbuk);
-        jeonnam = (RadioButton) view.findViewById(R.id.jeonnam);
-        jeonbuk = (RadioButton) view.findViewById(R.id.jeonbuk);
-        chungnam = (RadioButton) view.findViewById(R.id.chungnam);
-        chungbuk = (RadioButton) view.findViewById(R.id.chungbuk);
-        gangwon = (RadioButton) view.findViewById(R.id.gangwon);
-        jeju = (RadioButton) view.findViewById(R.id.jeju);
+        gyeonggi = (TextView) view.findViewById(R.id.gyeonggi);
+        gyeongnam = (TextView) view.findViewById(R.id.gyeongnam);
+        gyeongbuk = (TextView) view.findViewById(R.id.gyeongbuk);
+        jeonnam = (TextView) view.findViewById(R.id.jeonnam);
+        jeonbuk = (TextView) view.findViewById(R.id.jeonbuk);
+        chungnam = (TextView) view.findViewById(R.id.chungnam);
+        chungbuk = (TextView) view.findViewById(R.id.chungbuk);
+        gangwon = (TextView) view.findViewById(R.id.gangwon);
+        jeju = (TextView) view.findViewById(R.id.jeju);
 
         gyeonggi.setOnClickListener(this);
         gyeongnam.setOnClickListener(this);
