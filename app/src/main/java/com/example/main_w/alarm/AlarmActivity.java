@@ -312,6 +312,8 @@ public class AlarmActivity extends Service {
             }
             bubble_weather.setText(now_weather);
 
+
+
 //            for(int u = (hour/3)-1;u<7;hour++){
 //                if(u<0)
 //                    continue;
