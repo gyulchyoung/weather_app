@@ -15,24 +15,6 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="DialogTextNormal" parent="android:TextAppearance">
-        <item name="android:gravity">center</item>
-        <item name="android:lineSpacingExtra">5dp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/navy</item>
-        <item name="android:fontFamily">@font/neo_dgm</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-    
-    <style name="DialogTextBold" parent="android:TextAppearance">
-        <item name="android:gravity">center</item>
-        <item name="android:lineSpacingExtra">5dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/navy</item>
-        <item name="android:fontFamily">@font/neo_dgm</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
     <style name="Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
