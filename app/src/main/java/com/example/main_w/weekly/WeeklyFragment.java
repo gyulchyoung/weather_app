@@ -112,7 +112,8 @@ public class WeeklyFragment extends Fragment {
         String tempCode = PreferenceManager.getString(getContext(), "locationCityCode");
         String weatherCode = PreferenceManager.getString(getContext(), "locationCountryCode");
 
-        if(tempCode==null||weatherCode==null)
+
+        if(tempCode.isEmpty()||weatherCode.isEmpty())
         {
             tempCode = "11B10101";
             weatherCode = "11B00000";
@@ -140,10 +141,8 @@ public class WeeklyFragment extends Fragment {
         @Override
         public void onResponse(Call<WeeklyModel_weather> call, Response<WeeklyModel_weather> response) {
             Log.d("My Tag", "response= "+response.raw().request().url().url());
-//            System.out.println("여기 지나가니?");
 
             Item item = response.body().getResponse().getBody().getItems().getItem()[0];
-//            System.out.println(item);
 
 //            day-=1;
             for(int i = 0; i<5; i++)
@@ -154,7 +153,6 @@ public class WeeklyFragment extends Fragment {
         public void onFailure(Call<WeeklyModel_weather> call, Throwable t) {
             t.printStackTrace();
             Log.v("My Tag", "response= "+call.request().url());
-//            System.out.println("실패");
 
         }
     };
@@ -165,7 +163,6 @@ public class WeeklyFragment extends Fragment {
             Log.d("My Tag", "response= " + response.raw().request().url().url());
 
             com.example.main_w.weekly.temp_model.Item item = response.body().getResponse().getBody().getItems().getItem()[0];
-//            System.out.println(item);
 
             for (int i = 0; i < 5; i++) {
                 adapter.setTempData(i, item.getTemp(i));
@@ -176,7 +173,6 @@ public class WeeklyFragment extends Fragment {
         public void onFailure(Call<WeeklyModel_Temp> call, Throwable t) {
             t.printStackTrace();
             Log.v("My Tag", "response= " + call.request().url());
-//            System.out.println("실패");
         }
     };
 
