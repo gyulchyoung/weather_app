@@ -71,7 +71,7 @@
         <item name="android:button">@null</item>
         <item name="android:drawableEnd">@drawable/radio_btn_selector</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/navy</item>
         <item name="android:fontFamily">@font/neo_dgm</item>
