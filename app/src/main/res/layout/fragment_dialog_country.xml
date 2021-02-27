@@ -8,101 +8,103 @@
     android:orientation="vertical">
 
     <LinearLayout
-    android:layout_width="350dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/dialog_background"
-    android:gravity="center"
-    android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:paddingStart="55dp"
+        android:paddingEnd="55dp"
+        android:background="@drawable/dialog_background"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <RadioButton
+        <TextView
             android:id="@+id/gyeonggi"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
+            android:text="@string/gyeong_gi" />
+
+        <TextView
+            android:id="@+id/gyeongnam"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:button="@null"
-            android:textSize="24sp"
-            android:text="@string/gyeong_gi" />
-
-        <RadioButton
-            android:id="@+id/gyeongnam"
-            style="@style/DialogTextNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/gyeong_nam" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/gyeongbuk"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/gyeong_buk" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/jeonnam"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/jeon_nam" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/jeonbuk"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/jeon_buk" />
             
-        <RadioButton
+        <TextView
             android:id="@+id/chungnam"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/chung_nam" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/chungbuk"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/chung_buk" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/gangwon"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/gang_won" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/jeju"
-            style="@style/DialogTextNormal"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="15dp"
-            android:button="@null"
-            android:textSize="24sp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/country_size"
             android:text="@string/jeju" />
     </LinearLayout>
 </LinearLayout>

@@ -1,50 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".alarm.AlarmFragment"
-    android:background="#D14B35">
+    android:background="@color/blue">
 
     <TimePicker
         android:id="@+id/main_alarm_timepicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
-        android:layout_centerHorizontal="true"/>
+        android:gravity="center"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/time_reg_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_alignLeft="@+id/main_alarm_timepicker"
-        android:layout_marginLeft="16dp"
-        android:layout_below="@+id/main_alarm_timepicker"
-        android:onClick="regist"
-        android:text="등록"
-        android:background="@drawable/button_rd_bd"
-        android:textColor="#0D0180" />
-    <Button
-        android:id="@+id/time_unreg_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/time_reg_button"
-        android:layout_alignRight="@+id/main_alarm_timepicker"
-        android:layout_marginRight="16dp"
-        android:onClick="unregist"
-        android:text="해제"
-        android:background="@drawable/button_rd_bd"
-        android:textColor="#0D0180"/>
-    <Button
-        android:id="@+id/get_location_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:layout_marginStart="100dp"
-        android:text="지역 설정"
-        android:background="@drawable/button_rd_bd"
-        android:textColor="#0D0180"/>
-</RelativeLayout>
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_alarm_timepicker">
+
+        <TextView
+            android:id="@+id/time_reg_button"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:onClick="regist"
+            android:text="등록"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/get_location_button"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:text="지역"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/time_unreg_button"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent"
+            android:onClick="unregist"
+            android:text="해제"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

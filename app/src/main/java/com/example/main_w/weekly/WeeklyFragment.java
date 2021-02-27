@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.main_w.PreferenceManager;
 import com.example.main_w.R;
 import com.example.main_w.weekly.temp_model.WeeklyModel_Temp;
 import com.example.main_w.weekly.weather_model.Item;
@@ -84,15 +85,16 @@ public class WeeklyFragment extends Fragment {
         if (now_date.before(sixAM)) {
             calendar.add(Calendar.DATE, -1 );  // 오늘 날짜에서 하루를 뺌.
             set_time="1800";
+            day++;
         }
         String date = date_f.format(calendar.getTime());
 
         day = calendar.get(Calendar.DAY_OF_WEEK);
 
 
-        System.out.println(date);
-        System.out.println(now_string);
-        System.out.println(sixAMstring);
+//        System.out.println(date);
+//        System.out.println(now_string);
+//        System.out.println(sixAMstring);
 
 
 
@@ -107,17 +109,25 @@ public class WeeklyFragment extends Fragment {
 
         initData();
 
+        String tempCode = PreferenceManager.getString(getContext(), "locationCityCode");
+        String weatherCode = PreferenceManager.getString(getContext(), "locationCountryCode");
 
+
+        if(tempCode.isEmpty()||weatherCode.isEmpty())
+        {
+            tempCode = "11B10101";
+            weatherCode = "11B00000";
+        }
 
         Call<WeeklyModel_weather> getWeatherInstance = weeklyRetrofitFactory_weather.getWeekly_weatherApi()
-                .getList(API_KEY, "1", "11B00000", date+set_time, "JSON");//하루전꺼 조사해서 3,4,5,6이면 당일기준 2,3,4,5 시간수정
+                .getList(API_KEY, "1", weatherCode, date+set_time, "JSON");//하루전꺼 조사해서 3,4,5,6이면 당일기준 2,3,4,5 시간수정
         getWeatherInstance.enqueue(weeklyWeatherCallback);
 
         Call<WeeklyModel_Temp> getTempInstance = weeklyRetrofitFactory_temp.getWeekly_tempApi()
-                .getList(API_KEY, "1", "11B10101", date + set_time, "JSON");
+                .getList(API_KEY, "1", tempCode, date + set_time, "JSON");
         getTempInstance.enqueue(weeklyTempCallback);
         try {
-            Thread.sleep(500);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -131,12 +141,10 @@ public class WeeklyFragment extends Fragment {
         @Override
         public void onResponse(Call<WeeklyModel_weather> call, Response<WeeklyModel_weather> response) {
             Log.d("My Tag", "response= "+response.raw().request().url().url());
-            System.out.println("여기 지나가니?");
 
             Item item = response.body().getResponse().getBody().getItems().getItem()[0];
-            System.out.println(item);
 
-            day-=1;
+//            day-=1;
             for(int i = 0; i<5; i++)
                 setData(day,i,item);
         }
@@ -145,7 +153,6 @@ public class WeeklyFragment extends Fragment {
         public void onFailure(Call<WeeklyModel_weather> call, Throwable t) {
             t.printStackTrace();
             Log.v("My Tag", "response= "+call.request().url());
-            System.out.println("실패");
 
         }
     };
@@ -156,12 +163,6 @@ public class WeeklyFragment extends Fragment {
             Log.d("My Tag", "response= " + response.raw().request().url().url());
 
             com.example.main_w.weekly.temp_model.Item item = response.body().getResponse().getBody().getItems().getItem()[0];
-            System.out.println(item);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
             for (int i = 0; i < 5; i++) {
                 adapter.setTempData(i, item.getTemp(i));
@@ -172,7 +173,6 @@ public class WeeklyFragment extends Fragment {
         public void onFailure(Call<WeeklyModel_Temp> call, Throwable t) {
             t.printStackTrace();
             Log.v("My Tag", "response= " + call.request().url());
-            System.out.println("실패");
         }
     };
 

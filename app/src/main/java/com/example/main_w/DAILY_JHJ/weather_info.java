@@ -4,11 +4,16 @@ public class weather_info {
     String temperature;
     String time;
     String rain_rate;
+    int img;
 
-    public weather_info(String temperature, String time, String rain_rate) {
-        this.temperature = temperature;
-        this.time = time;
-        this.rain_rate = rain_rate;
+    public weather_info(){};
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public String getTemperature() {

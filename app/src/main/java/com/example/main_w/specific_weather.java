@@ -1,5 +1,6 @@
 package com.example.main_w;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -22,9 +23,9 @@ public class specific_weather extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.specific_weather);
 
-//        FragmentManager manager = getSupportFragmentManager();
-//        dailyFragment = (daily) manager.findFragmentById(R.id.fragment);
-//        weeklyFragment = (WeeklyFragment) manager.findFragmentById(R.id.weekly_weather);
+        FragmentManager manager = getSupportFragmentManager();
+        dailyFragment = (daily) manager.findFragmentById(R.id.fragment);
+        weeklyFragment = (WeeklyFragment) manager.findFragmentById(R.id.weekly_weather);
 
     }
 }

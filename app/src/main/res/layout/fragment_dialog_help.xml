@@ -1,65 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
     android:gravity="center"
     android:orientation="vertical">
-
+    
     <LinearLayout
-    android:layout_width="390dp"
-    android:layout_height="match_parent"
-    android:paddingTop="40dp"
-    android:paddingBottom="40dp"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp"
-    android:background="@drawable/dialog_background"
-    android:gravity="center"
-    android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="25dp"
-            android:paddingBottom="25dp"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"
-            style="@style/DialogTextNormal"
-            android:background="@drawable/help_dialog_title"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="@string/dialog_title" />
-
-        <TextView
-            android:id="@+id/first_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            style="@style/DialogTextBold"
-            android:background="@android:color/transparent"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:text="@string/dialog_first" />
-
-        <TextView
-            android:id="@+id/second_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            style="@style/DialogTextNormal"
-            android:background="@android:color/transparent"
-            android:textSize="14sp"
-            android:text="@string/dialog_second" />
-
-        <TextView
-            android:id="@+id/third_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            style="@style/DialogTextNormal"
-            android:background="@android:color/transparent"
-            android:textSize="14sp"
-            android:text="@string/dialog_third" />
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:background="@drawable/help_dialog"
+        android:gravity="center"
+        android:orientation="vertical">
     </LinearLayout>
 </LinearLayout>

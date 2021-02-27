@@ -14,12 +14,6 @@
     <string name="temperature">temperature</string>
     <string name="rain_rate">rain_rate</string>
 
-    <string name="dialog_title">매직고양이가 마법의 구슬로\n날씨를 알려줘요 !</string>
-    <string name="dialog_first">날씨도 못 맞추는 집사를 위해\n마법사 고양이가 나타났어요 !</string>
-    <string name="dialog_second">고양이는 날씨를 알려주는\n마법의 수정구슬을 사용할 수 있답니다.</string>
-    <string name="dialog_third">말풍선은 현재 날씨를,\n고양이의 물건은 미래 날씨를 보여줘요 !</string>
-
-
     <string-array name="days">
         <item>일요일</item>
         <item>월요일</item>
@@ -39,5 +33,31 @@
     <string name="chung_buk">충청북도</string>
     <string name="gang_won">강원도</string>
     <string name="jeju">제주도</string>
+
+    <string name="alarm_warning_msg">날씨를 선택해 주세요 !</string>
+
+    <string name="alert_rain">지금 밖에 비가 와요 !</string>
+    <string name="alert_snow">지금 밖에 눈이 와요 !</string>
+    <string name="alert_typhoon">위험하니 집에 일찍 돌아가세요 !</string>
+
+    <string name="alarm_delete">삭제</string>
+    <string name="alarm_done">완료</string>
+    <string name="alarm_add">추가</string>
+    <string name="alarm_cancel">취소</string>
+    <string name="alarm_save">저장</string>
+    <string name="alarm_rain">비</string>
+    <string name="alarm_snow">눈</string>
+    <string name="alarm_typhoon">자연재해</string>
+    <string name="alarm_name">알람</string>
+    <string name="repeat_weekday">, 주중</string>
+    <string name="repeat_weekend">, 주말</string>
+    <string name="repeat_everyday">, 매일</string>
+    <string name="sun">일</string>
+    <string name="mon">월</string>
+    <string name="tue">화</string>
+    <string name="wed">수</string>
+    <string name="thu">목</string>
+    <string name="fri">금</string>
+    <string name="sat">토</string>
 
 </resources>
