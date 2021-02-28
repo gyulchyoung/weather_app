@@ -24,6 +24,11 @@
         <item>토요일</item>
     </string-array>
 
+    <string name="select_time">알람 시각</string>
+    <string name="select_location">현재 위치</string>
+    <string name="regist">등록</string>
+    <string name="unregist">해제</string>
+
     <string name="gyeong_gi">서울.인천.경기도</string>
     <string name="gyeong_nam">부산.울산.경상남도</string>
     <string name="gyeong_buk">대구.경상북도</string>

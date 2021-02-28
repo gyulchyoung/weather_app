@@ -69,6 +69,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.itemVi
                         PreferenceManager.setString(view.getContext(),"locationCityCode", location.cityCode);
                     
                     PreferenceManager.setString(view.getContext(), "locationCountryCode", location.countryCode);
+                    PreferenceManager.setString(view.getContext(), "locationCity", location.city);
                     PreferenceManager.setInt(view.getContext(), "locationX", location.axisX);
                     PreferenceManager.setInt(view.getContext(), "locationY", location.axisY);
 

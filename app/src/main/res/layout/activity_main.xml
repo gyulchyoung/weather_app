@@ -40,7 +40,7 @@
                     android:id="@+id/drawer_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_dehaze_24"
+                    android:src="@drawable/ic_setting"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
@@ -131,7 +131,7 @@
         <fragment
             android:id="@+id/fragment_a"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:name="com.example.main_w.alarm.AlarmFragment" />
     </LinearLayout>
 

@@ -6,14 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.main_w.alarm.AlarmFragment;
+
 
 public class CountryDialogFragment extends DialogFragment implements View.OnClickListener{
     public static String DIALOG_TAG = "countryDialog";
+
     private TextView gyeonggi;
     private TextView gyeongnam;
     private TextView gyeongbuk;
@@ -23,14 +27,17 @@ public class CountryDialogFragment extends DialogFragment implements View.OnClic
     private TextView chungbuk;
     private TextView gangwon;
     private TextView jeju;
+    private AlarmFragment alarmFragment;
 
-    private String country;
+    private String prevCountry;
+    private String curCountry;
     private boolean checked;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NO_TITLE, R.style.Dialog);
+        prevCountry = PreferenceManager.getString(getContext(), "locationCountry");
 
         checked = false;
     }
@@ -67,8 +74,9 @@ public class CountryDialogFragment extends DialogFragment implements View.OnClic
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         if(checked) {
+            PreferenceManager.setString(getContext(), "locationCountry", curCountry);
             Bundle bundle = new Bundle();
-            bundle.putString("country", country);
+            bundle.putString("prevCountry", prevCountry);
 
             FragmentManager fm = getActivity().getSupportFragmentManager();
             DialogFragment cityDialog = new CityDialogFragment();
@@ -78,44 +86,50 @@ public class CountryDialogFragment extends DialogFragment implements View.OnClic
     }
 
     @Override
+    public void onCancel(@NonNull DialogInterface dialog) {
+        super.onCancel(dialog);
+        Toast.makeText(getContext(), "cancel", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onClick(View v) {
         checked = true;
 
         switch (v.getId()){
             case R.id.gyeonggi:
-                country = gyeonggi.getText().toString();
+                curCountry = gyeonggi.getText().toString();
                 dismiss();
                 break;
             case R.id.gyeongnam:
-                country = gyeongnam.getText().toString();
+                curCountry = gyeongnam.getText().toString();
                 dismiss();
                 break;
             case R.id.gyeongbuk:
-                country = gyeongbuk.getText().toString();
+                curCountry = gyeongbuk.getText().toString();
                 dismiss();
                 break;
             case R.id.jeonnam:
-                country = jeonnam.getText().toString();
+                curCountry = jeonnam.getText().toString();
                 dismiss();
                 break;
             case R.id.jeonbuk:
-                country = jeonbuk.getText().toString();
+                curCountry = jeonbuk.getText().toString();
                 dismiss();
                 break;
             case R.id.chungnam:
-                country = chungnam.getText().toString();
+                curCountry = chungnam.getText().toString();
                 dismiss();
                 break;
             case R.id.chungbuk:
-                country = chungbuk.getText().toString();
+                curCountry = chungbuk.getText().toString();
                 dismiss();
                 break;
             case R.id.gangwon:
-                country = gangwon.getText().toString();
+                curCountry = gangwon.getText().toString();
                 dismiss();
                 break;
             case R.id.jeju:
-                country = jeju.getText().toString();
+                curCountry = jeju.getText().toString();
                 dismiss();
                 break;
         }
