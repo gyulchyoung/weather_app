@@ -50,8 +50,11 @@ public class MainActivity<status> extends AppCompatActivity {
     int month=now.get(Calendar.MONTH)+1;
     int day=now.get(Calendar.DAY_OF_MONTH);
     int hour=now.get(Calendar.HOUR_OF_DAY);
+    String now_PTY="-1";
+    String now_T3H="-1";
 
     private AppBarConfiguration mAppBarConfiguration;
+
 
     class ggetXML extends AsyncTask<String, Void, String> {
 
@@ -165,8 +168,6 @@ public class MainActivity<status> extends AppCompatActivity {
             int t=3;
 
             int now_TIME=hour;
-            String now_T3H="0";
-            String now_PTY="0";
             String now_SKY="1";
 
             int k=0;
@@ -180,6 +181,8 @@ public class MainActivity<status> extends AppCompatActivity {
                 k++;
             }
 
+            Log.d("nowT3H",now_T3H);
+            Log.d("nowPTY",now_PTY);
             if(now_PTY.equals("0")){ //맑음
                 findViewById(R.id.umbrella).setVisibility(View.INVISIBLE);
                 findViewById(R.id.snowcat).setVisibility(View.INVISIBLE);
@@ -210,6 +213,48 @@ public class MainActivity<status> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        int locationX = PreferenceManager.getInt(getApplicationContext(), "locationX");
+        int locationY = PreferenceManager.getInt(getApplicationContext(), "locationY");
+
+        if(hour<23){
+            //위치가 0,0일 시 서울위치로 초기화
+            if(locationX ==0)
+                locationX=60;
+            if(locationY == 0)
+                locationY=127;
+
+            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day-1);
+            String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
+                    "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
+                    "numOfRows=225&pageNo=1&base_date=" +
+                    today + //오늘 날짜
+                    "&base_time=2300&nx=" +
+                    locationX + //x좌표
+                    "&ny=" +
+                    locationY; //y좌표
+            new ggetXML().execute(url2); //기상청 url 파싱 후 실행
+        }
+        else{
+            if(locationX ==0)
+                locationX=60;
+            if(locationY == 0)
+                locationY=127;
+
+            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day);
+            String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
+                    "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
+                    "numOfRows=225&pageNo=1&base_date=" +
+                    today +
+                    "&base_time=0200" +
+                    "&nx=" +
+                    locationX +
+                    "&ny=" +
+                    locationY;
+            new ggetXML().execute(url2);
+
+        }
 
         SwipeRefreshLayout mainSwipe = (SwipeRefreshLayout) findViewById(R.id.main_swipe);
         mainSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
