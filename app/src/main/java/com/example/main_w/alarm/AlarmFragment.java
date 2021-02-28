@@ -21,15 +21,25 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.main_w.CityDialogFragment;
 import com.example.main_w.CountryDialogFragment;
+import com.example.main_w.PreferenceManager;
 import com.example.main_w.R;
+
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
 
 public class AlarmFragment extends Fragment implements View.OnClickListener{
+    public static final String DEFAULT_COUNTRY = "서울.인천.경기도";
+    public static final String DEFAULT_CITY = "서울특별시";
+
     private TimePicker timePicker;
     private AlarmManager alarmManager;
+    private TextView currentCountry;
+    private TextView currentCity;
     Intent intent;
     private int hour, minute;
 
@@ -45,12 +55,18 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
 
         getPermission();
 
-        TextView regBtn=rootView.findViewById(R.id.time_reg_button);
-        TextView unregBtn = rootView.findViewById(R.id.time_unreg_button);
-        TextView locationBtn = rootView.findViewById(R.id.get_location_button);
+        TextView regBtn = (TextView) rootView.findViewById(R.id.time_reg_button);
+        TextView unregBtn = (TextView) rootView.findViewById(R.id.time_unreg_button);
+        currentCountry = (TextView) rootView.findViewById(R.id.current_country);
+        currentCity = (TextView) rootView.findViewById(R.id.current_city);
+
         regBtn.setOnClickListener(this);
         unregBtn.setOnClickListener(this);
-        locationBtn.setOnClickListener(this);
+        currentCountry.setOnClickListener(this);
+        currentCity.setOnClickListener(this);
+
+        CityDialogFragment.setAlarmFragment(this);
+        setLocation();
         return rootView;
     }
 
@@ -82,23 +98,50 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
         alarmManager.cancel(pIntent);
     }
 
-    //지역 설정 dialog 생성
-    public void setLocation(View view){
+    // 지역 설정 dialog 생성
+    public void setCountry(){
         FragmentManager fm = getActivity().getSupportFragmentManager();
         DialogFragment countryDialog = new CountryDialogFragment();
         countryDialog.show(fm, CountryDialogFragment.DIALOG_TAG);
     }
 
+    // 도시 설정 dialog 생성
+    public void setCity(){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        DialogFragment cityDialog = new CityDialogFragment();
+        cityDialog.show(fm, CityDialogFragment.DIALOG_TAG);
+    }
+
+    // 현 위치 초기화
+    public void setLocation(){
+        String country = PreferenceManager.getString(getContext(), "locationCountry");
+        String city = PreferenceManager.getString(getContext(), "locationCity");
+        if(country.equals("")) {
+            currentCountry.setText(DEFAULT_COUNTRY);
+            currentCity.setText(DEFAULT_CITY);
+        }
+        else{
+            currentCountry.setText(country);
+            currentCity.setText(city);
+        }
+    }
+
     @Override
     public void onClick(View view) {
-
-
-        if(view.getId() == R.id.time_reg_button)
-            regist(view);
-        else if (view.getId() == R.id.time_unreg_button)
-            unregist(view);
-        else if(view.getId() == R.id.get_location_button)
-            setLocation(view);
+        switch (view.getId()){
+            case R.id.time_reg_button:
+                regist(view);
+                break;
+            case R.id.time_unreg_button:
+                unregist(view);
+                break;
+            case R.id.current_country:
+                setCountry();
+                break;
+            case R.id.current_city:
+                setCity();
+                break;
+        }
     }
 
     public void getPermission(){
