@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.main_w.location.LocationDatabase;
@@ -45,6 +47,11 @@ public class MainActivity<status> extends AppCompatActivity {
 
     String[][] arr = new String[15][5];
     Calendar now = Calendar.getInstance();
+    TextView rain_pb_text;
+    TextView temp_pb_text;
+    ProgressBar rain_pb;
+    ProgressBar temp_pb;
+
 
     int year=now.get(Calendar.YEAR);
     int month=now.get(Calendar.MONTH)+1;
@@ -210,6 +217,17 @@ public class MainActivity<status> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        rain_pb_text=findViewById(R.id.pb_rain_text);
+        rain_pb = findViewById(R.id.pb_rain);
+        temp_pb_text = findViewById(R.id.pb_temp_text);
+        temp_pb = findViewById(R.id.pb_temp);
+
+        rain_pb.setProgress(20);
+        temp_pb.setProgress(36);
+        rain_pb_text.setText("20");
+        temp_pb_text.setText("36");
+
 
         SwipeRefreshLayout mainSwipe = (SwipeRefreshLayout) findViewById(R.id.main_swipe);
         mainSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
