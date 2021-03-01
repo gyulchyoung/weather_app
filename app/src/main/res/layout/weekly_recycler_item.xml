@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="3dp"
-        android:background="#232196F3">
+        android:background="@drawable/recycler_background">
 
         <TextView
             android:id="@+id/day_textView"
@@ -20,53 +20,56 @@
             android:layout_height="wrap_content"
             android:text="화요일"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_weight="2"/>
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/app_font"
+            android:textSize="16dp"/>
         <ImageView
             android:id="@+id/weather_imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/sunny"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-
-            android:layout_weight="2"/>
+            android:scaleType="fitCenter" />
         <TextView
             android:id="@+id/weather_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/app_font"
             android:text="맑음"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_weight="1.5"/>
+            android:textSize="14dp"
+            android:gravity="center" />
         <TextView
             android:id="@+id/temp_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/app_font"
             android:text="-3/-13"
+            android:textSize="14dp"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_weight="1"/>
+            android:layout_marginTop="7dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp">
             <ImageView
                 android:id="@+id/rain_prob_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxHeight="18dp"
+                android:maxHeight="14dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/item_rain_prop" />
+                android:src="@drawable/item_rain_prop"
+                android:layout_centerVertical="true" />
             <TextView
                 android:id="@+id/rain_prob_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/app_font"
                 android:text="10"
+                android:textSize="14dp"
                 android:layout_toRightOf="@+id/rain_prob_img"
-                android:layout_alignBaseline="@+id/rain_prob_img"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:layout_weight="1"/>
+                android:layout_alignBaseline="@+id/rain_prob_img"/>
         </RelativeLayout>
 
     </LinearLayout>
