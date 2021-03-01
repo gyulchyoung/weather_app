@@ -19,6 +19,67 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingRight="15dp"
+                android:layout_marginTop="100dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재온도"
+                    android:layout_toLeftOf="@+id/pb_temp"
+                    android:layout_marginRight="10dp"/>
+                <ProgressBar
+                    android:id="@+id/pb_temp"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:max="50"
+                    android:progress="0"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/progress"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_toLeftOf="@+id/pb_temp_text"/>
+                <TextView
+                    android:id="@+id/pb_temp_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignBottom="@+id/pb_temp"
+                    android:layout_alignParentRight="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="강수확률"
+                    android:layout_toLeftOf="@id/pb_rain"
+                    android:layout_alignTop="@+id/pb_rain"
+                    android:layout_marginRight="10dp"/>
+                <ProgressBar
+                    android:id="@+id/pb_rain"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/progress"
+                    android:layout_below="@id/pb_temp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toLeftOf="@+id/pb_rain_text"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+                <TextView
+                    android:id="@+id/pb_rain_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:layout_alignBottom="@+id/pb_rain"
+                    android:layout_alignTop="@+id/pb_rain"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentRight="true"/>
+
+                
+            </RelativeLayout>
 
             <!--        상태창 layout      -->
             <!--        mainview 나머지        -->

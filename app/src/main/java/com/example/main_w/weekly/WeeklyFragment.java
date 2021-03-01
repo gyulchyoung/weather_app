@@ -144,7 +144,7 @@ public class WeeklyFragment extends Fragment {
 
             Item item = response.body().getResponse().getBody().getItems().getItem()[0];
 
-//            day-=1;
+            day-=1;
             for(int i = 0; i<5; i++)
                 setData(day,i,item);
         }
