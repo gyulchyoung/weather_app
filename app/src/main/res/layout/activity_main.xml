@@ -26,6 +26,7 @@
                 android:paddingRight="15dp"
                 android:layout_marginTop="100dp">
                 <TextView
+                    android:fontFamily="@font/app_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="현재온도"
@@ -34,22 +35,26 @@
                 <ProgressBar
                     android:id="@+id/pb_temp"
                     android:layout_width="100dp"
-                    android:layout_height="20dp"
+                    android:layout_height="15dp"
                     android:max="50"
                     android:progress="0"
                     android:indeterminateOnly="false"
                     android:progressDrawable="@drawable/progress"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_toLeftOf="@+id/pb_temp_text"/>
+                    android:layout_alignLeft="@id/pb_rain"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
                 <TextView
                     android:id="@+id/pb_temp_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:text="20"
+                    android:fontFamily="@font/app_font"
                     android:layout_marginLeft="10dp"
                     android:layout_alignBottom="@+id/pb_temp"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_toRightOf="@id/pb_temp"/>
+
+
                 <TextView
+                    android:fontFamily="@font/app_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="강수확률"
@@ -59,23 +64,25 @@
                 <ProgressBar
                     android:id="@+id/pb_rain"
                     android:layout_width="100dp"
-                    android:layout_height="20dp"
+                    android:layout_height="15dp"
                     android:max="100"
                     android:progress="0"
                     android:indeterminateOnly="false"
                     android:progressDrawable="@drawable/progress"
                     android:layout_below="@id/pb_temp"
-                    android:layout_marginTop="16dp"
-                    android:layout_toLeftOf="@+id/pb_rain_text"
+                    android:layout_marginTop="8dp"
+                    android:layout_toLeftOf="@id/pb_rain_text"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
                 <TextView
                     android:id="@+id/pb_rain_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:text="20"
+                    android:fontFamily="@font/app_font"
                     android:layout_alignBottom="@+id/pb_rain"
                     android:layout_alignTop="@+id/pb_rain"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"/>
 
                 
@@ -101,7 +108,7 @@
                     android:id="@+id/drawer_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_dehaze_24"
+                    android:src="@drawable/ic_setting"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
@@ -192,7 +199,7 @@
         <fragment
             android:id="@+id/fragment_a"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:name="com.example.main_w.alarm.AlarmFragment" />
     </LinearLayout>
 

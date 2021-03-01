@@ -35,7 +35,7 @@ public class AlarmListActivity extends AppCompatActivity implements CompoundButt
     private SlidingUpPanelLayout slidingLayout;
     private RecyclerView recyclerView;
     private AlarmAdapter alarmAdapter;
-    public static AlarmDatabase alarmDB;
+    private static AlarmDatabase alarmDB;
     private Alarm alarm;
 
     private StringBuilder repeatStr;
@@ -58,6 +58,14 @@ public class AlarmListActivity extends AppCompatActivity implements CompoundButt
     private int mWeather = -1;
     private String mName, mRepeat, mTime;
     private List<Boolean> isDay = new ArrayList<>();
+
+    public static void setAlarmDB(AlarmDatabase db){
+        alarmDB = db;
+    }
+
+    public static AlarmDatabase getAlarmDatabase() {
+        return alarmDB;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

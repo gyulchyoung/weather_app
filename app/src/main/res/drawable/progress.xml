@@ -4,13 +4,19 @@
         <shape>
             <solid
                 android:color="@android:color/white"/>
+            <stroke android:color="@color/navy"
+                android:width="3dp"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
 
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="#12288A"/>
+                <corners android:radius="6dp"/>
+                <solid android:color="@color/blue"/>
+                <stroke android:color="@color/navy"
+                    android:width="3dp"/>
             </shape>
         </clip>
     </item>

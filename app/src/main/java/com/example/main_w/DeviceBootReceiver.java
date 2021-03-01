@@ -14,7 +14,7 @@ public class DeviceBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-            AlarmDatabase alarmDB = AlarmListActivity.alarmDB;
+            AlarmDatabase alarmDB = AlarmListActivity.getAlarmDatabase();
 
             new Thread(() -> {
                 List<Alarm> alarmList = alarmDB.alarmDao().getAllList();
