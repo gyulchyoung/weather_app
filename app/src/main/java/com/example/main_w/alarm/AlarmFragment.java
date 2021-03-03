@@ -11,7 +11,6 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -25,8 +24,6 @@ import com.example.main_w.CityDialogFragment;
 import com.example.main_w.CountryDialogFragment;
 import com.example.main_w.PreferenceManager;
 import com.example.main_w.R;
-
-import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -50,6 +47,7 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
         ViewGroup rootView=(ViewGroup) inflater.inflate(R.layout.set_alarm, container, false);
 
         timePicker = rootView.findViewById(R.id.main_alarm_timepicker);
+        timePicker.setIs24HourView(true);
         alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
         intent = new Intent(rootView.getContext(), AlarmReceiver.class);
 
@@ -84,6 +82,10 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
+
+        // 알람 설정 시각이 현재 시각보다 이전일 경우 다음날 울리도록 설정
+        if(calendar.before(Calendar.getInstance()))
+            calendar.add(Calendar.DATE, 1);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pIntent);
