@@ -37,6 +37,9 @@ android {
 }
 
 dependencies {
+    //swipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
     //Room components
     def room_version = "2.2.6"
     implementation "androidx.room:room-runtime:$room_version"
