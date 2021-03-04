@@ -54,7 +54,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/pb_temp"
                     android:fontFamily="@font/app_font"
-                    android:text="20" />
+                    android:text="00" />
 
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/app_font"
-                    android:text="20" />
+                    android:text="00" />
 
 
             </RelativeLayout>

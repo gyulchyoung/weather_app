@@ -216,10 +216,6 @@ public class MainActivity<status> extends AppCompatActivity {
                 findViewById(R.id.snowcat).setVisibility(View.INVISIBLE);
             }
 
-            rain_pb_text=findViewById(R.id.pb_rain_text);
-            rain_pb = findViewById(R.id.pb_rain);
-            temp_pb_text = findViewById(R.id.pb_temp_text);
-            temp_pb = findViewById(R.id.pb_temp);
 
             rain_pb.setProgress(Integer.parseInt(now_POP));
             temp_pb.setProgress(Integer.parseInt(now_T3H));
@@ -249,10 +245,10 @@ public class MainActivity<status> extends AppCompatActivity {
         temp_pb_text = findViewById(R.id.pb_temp_text);
         temp_pb = findViewById(R.id.pb_temp);
 
-        rain_pb.setProgress(20);
-        temp_pb.setProgress(36);
-        rain_pb_text.setText("20");
-        temp_pb_text.setText("36");
+//        rain_pb.setProgress(20);
+//        temp_pb.setProgress(36);
+//        rain_pb_text.setText("20");
+//        temp_pb_text.setText("36");
 
         SwipeRefreshLayout mainSwipe = (SwipeRefreshLayout) findViewById(R.id.main_swipe);
         mainSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
