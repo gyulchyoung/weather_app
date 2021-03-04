@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.main_w.alarm.AlarmFragment;
 
-
 public class CountryDialogFragment extends DialogFragment implements View.OnClickListener{
     public static String DIALOG_TAG = "countryDialog";
 

@@ -1,7 +1,6 @@
 package com.example.main_w.location;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.room.Database;
 import androidx.room.Room;
