@@ -2,19 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="50dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="상세날씨"
+        android:fontFamily="@font/app_font"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="bottom"/>
     <fragment
         android:id="@+id/fragment"
         android:name="com.example.main_w.DAILY_JHJ.daily"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" />
+        android:layout_margin="10dp"
+        android:layout_weight="3" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="주간날씨"
+        android:fontFamily="@font/app_font"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center_vertical"/>
 
     <fragment
         android:id="@+id/weekly_weather"
         android:name="com.example.main_w.weekly.WeeklyFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="2" />
+
 </LinearLayout>

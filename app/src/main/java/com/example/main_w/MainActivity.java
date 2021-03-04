@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity<status> extends AppCompatActivity {
@@ -45,18 +46,23 @@ public class MainActivity<status> extends AppCompatActivity {
     private int locationX;
     private int locationY;
 
-    String[][] arr = new String[15][5];
+    String[][] arr = new String[15][6];
     Calendar now = Calendar.getInstance();
+    int hour=now.get(Calendar.HOUR_OF_DAY);
     TextView rain_pb_text;
     TextView temp_pb_text;
     ProgressBar rain_pb;
     ProgressBar temp_pb;
 
+    public String fn_Yesterday() {
+        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
 
-    int year=now.get(Calendar.YEAR);
-    int month=now.get(Calendar.MONTH)+1;
-    int day=now.get(Calendar.DAY_OF_MONTH);
-    int hour=now.get(Calendar.HOUR_OF_DAY);
+        cal.add(Calendar.DATE, -1);
+        String timedate = Format.format(cal.getTime());
+
+        return timedate;
+    }
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -66,7 +72,7 @@ public class MainActivity<status> extends AppCompatActivity {
         protected String doInBackground(String... urls) {
             try {
                 for(int n=0;n<15;n++)
-                    for(int l=0;l<5;l++)
+                    for(int l=0;l<6;l++)
                         arr[n][l]="0";
 
                 int i=0;
@@ -74,6 +80,7 @@ public class MainActivity<status> extends AppCompatActivity {
                 Boolean T3H=Boolean.FALSE;
                 Boolean SKY=Boolean.FALSE;
                 Boolean PTY=Boolean.FALSE;
+                Boolean POP=Boolean.FALSE;
 
                 Boolean category = Boolean.FALSE;
                 Boolean fcstTime = Boolean.FALSE;
@@ -115,6 +122,9 @@ public class MainActivity<status> extends AppCompatActivity {
                                 else if(parser.getText().equals("PTY")) {
                                     PTY = Boolean.TRUE;
                                 }
+                                else if(parser.getText().equals("POP")){
+                                    POP = Boolean.TRUE;
+                                }
                                 category =Boolean.FALSE;
                             }
                             else if(fcstDate) {
@@ -141,6 +151,10 @@ public class MainActivity<status> extends AppCompatActivity {
                                 else if(SKY) {
                                     arr[i][4]=text;
                                     SKY=Boolean.FALSE;
+                                }
+                                else if(POP){
+                                    arr[i][5]=text;
+                                    POP=Boolean.FALSE;
                                 }
                                 fcstValue = Boolean.FALSE;
                             }
@@ -175,6 +189,7 @@ public class MainActivity<status> extends AppCompatActivity {
             String now_T3H="0";
             String now_PTY="0";
             String now_SKY="1";
+            String now_POP="0";
 
             int k=0;
             for(int num=0;num<24;num=num+3){
@@ -183,6 +198,7 @@ public class MainActivity<status> extends AppCompatActivity {
                     now_T3H = arr[k][2];
                     now_PTY = arr[k][3];
                     now_SKY = arr[k][4];
+                    now_POP = arr[k][5];
                 }
                 k++;
             }
@@ -199,6 +215,12 @@ public class MainActivity<status> extends AppCompatActivity {
                 findViewById(R.id.umbrella).setVisibility(View.VISIBLE);
                 findViewById(R.id.snowcat).setVisibility(View.INVISIBLE);
             }
+
+
+            rain_pb.setProgress(Integer.parseInt(now_POP));
+            temp_pb.setProgress(Integer.parseInt(now_T3H));
+            rain_pb_text.setText(now_POP);
+            temp_pb_text.setText(now_T3H);
         }
 
         private InputStream downloadUrl(String urlString) throws IOException {
@@ -222,18 +244,51 @@ public class MainActivity<status> extends AppCompatActivity {
         rain_pb = findViewById(R.id.pb_rain);
         temp_pb_text = findViewById(R.id.pb_temp_text);
         temp_pb = findViewById(R.id.pb_temp);
-
-        rain_pb.setProgress(20);
-        temp_pb.setProgress(36);
-        rain_pb_text.setText("20");
-        temp_pb_text.setText("36");
-
+        
 
         SwipeRefreshLayout mainSwipe = (SwipeRefreshLayout) findViewById(R.id.main_swipe);
         mainSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
+                int locationX = PreferenceManager.getInt(getApplicationContext(), "locationX");
+                int locationY = PreferenceManager.getInt(getApplicationContext(), "locationY");
+
+                if(hour<23){
+                    //위치가 0,0일 시 서울위치로 초기화
+                    if(locationX ==0)
+                        locationX=60;
+                    if(locationY == 0)
+                        locationY=127;
+
+                    String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
+                            "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
+                            "numOfRows=225&pageNo=1&base_date=" +
+                            fn_Yesterday() + //어제 날짜
+                            "&base_time=2300&nx=" +
+                            locationX + //x좌표
+                            "&ny=" +
+                            locationY; //y좌표
+                    new ggetXML().execute(url2); //기상청 url 파싱 후 실행
+                }
+                else{
+                    if(locationX ==0)
+                        locationX=60;
+                    if(locationY == 0)
+                        locationY=127;
+
+                    String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
+                            "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
+                            "numOfRows=225&pageNo=1&base_date=" +
+                            fn_Yesterday() +
+                            "&base_time=0200" +
+                            "&nx=" +
+                            locationX +
+                            "&ny=" +
+                            locationY;
+                    new ggetXML().execute(url2);
+                }
+                mainSwipe.setRefreshing(false);
             }
         });
 
@@ -275,53 +330,6 @@ public class MainActivity<status> extends AppCompatActivity {
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 if (!drawer.isDrawerOpen(Gravity.LEFT)) {
                     drawer.openDrawer(Gravity.LEFT);
-                }
-            }
-        });
-        //새로고침 버튼. 위치를 받아오고 누르면 고양이의 현재 날씨가 업데이트 된다.
-        Button button = findViewById(R.id.F5);
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                int locationX = PreferenceManager.getInt(view.getContext(), "locationX");
-                int locationY = PreferenceManager.getInt(view.getContext(), "locationY");
-
-                if(hour<23){
-                    //위치가 0,0일 시 서울위치로 초기화
-                    if(locationX ==0)
-                        locationX=60;
-                    if(locationY == 0)
-                        locationY=127;
-
-                    String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day-1);
-                    String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
-                            "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
-                            "numOfRows=225&pageNo=1&base_date=" +
-                            today + //오늘 날짜
-                            "&base_time=2300&nx=" +
-                            locationX + //x좌표
-                            "&ny=" +
-                            locationY; //y좌표
-                    new ggetXML().execute(url2); //기상청 url 파싱 후 실행
-                }
-                else{
-                    if(locationX ==0)
-                        locationX=60;
-                    if(locationY == 0)
-                        locationY=127;
-
-                    String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day);
-                    String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
-                            "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
-                            "numOfRows=225&pageNo=1&base_date=" +
-                            today +
-                            "&base_time=0200" +
-                            "&nx=" +
-                            locationX +
-                            "&ny=" +
-                            locationY;
-                    new ggetXML().execute(url2);
-
                 }
             }
         });

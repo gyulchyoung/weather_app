@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -37,24 +38,31 @@ public class AlarmActivity extends Service {
     private View view;
     private ImageView cat_view;
     private ImageView bubble_img;
+    private ImageView A_umbrella;
+    private ImageView A_snowcat;
     private TextView bubble_temp;
     private TextView bubble_weather;
     private View bubble_view;
-    private ImageView alarm_snowcat;
-    private ImageView alarm_umbrella;
 
     Calendar now = Calendar.getInstance();
-    int year=now.get(Calendar.YEAR);
-    int month=now.get(Calendar.MONTH)+1;
-    int day=now.get(Calendar.DAY_OF_MONTH);
     int hour=now.get(Calendar.HOUR_OF_DAY);
     String now_Tem;
     String now_weather;
-    String[][] arr = new String[15][5];
+    String[][] arr = new String[8][5];
     private int locationX;
     private int locationY;
     String[] TMN_value = new String[2];
     String[] TMX_value = new String[2];
+
+    public String fn_Yesterday() {
+        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE, -1);
+        String timedate = Format.format(cal.getTime());
+
+        return timedate;
+    }
 
     @Override
     public void onCreate( ) {
@@ -67,11 +75,11 @@ public class AlarmActivity extends Service {
         bubble_temp = view.getRootView().findViewById(R.id.bubble_temp_view);
         bubble_weather = view.getRootView().findViewById(R.id.bubble_weather_txt);
         bubble_view=view.getRootView().findViewById(R.id.bubble);
-        alarm_snowcat = view.getRootView().findViewById(R.id.alarm_snowcat);
-        alarm_umbrella=view.getRootView().findViewById(R.id.alarm_umbrella);
+        A_snowcat = view.getRootView().findViewById(R.id.A_snowcat);
+        A_umbrella = view.getRootView().findViewById(R.id.A_umbrella);
 
 //      cat_view.setImageResource(R.drawable.ic_magic_cat);
-        bubble_img.setImageResource(R.drawable.snow);
+        bubble_img.setImageResource(R.drawable.sunny);
 
         locationX= PreferenceManager.getInt(getApplicationContext(), "locationX");
         locationY=PreferenceManager.getInt(getApplicationContext(), "locationY");
@@ -107,8 +115,6 @@ public class AlarmActivity extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
-
 //        bubble_weather.setText("어쩌구");
 //        bubble_temp.setText("저쩌구");
 
@@ -145,11 +151,12 @@ public class AlarmActivity extends Service {
 
         return super.onStartCommand(intent, flags, startId);
     }
+
     class ggetXML extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls) {
             try {
-                for(int n=0;n<15;n++)
+                for(int n=0;n<8;n++)
                     for(int l=0;l<5;l++)
                         arr[n][l]="0";
 
@@ -267,17 +274,16 @@ public class AlarmActivity extends Service {
 
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            int t=3;
 
             Boolean SNOW=Boolean.FALSE;
             Boolean RAIN=Boolean.FALSE;
-            int now_TIME=hour;
+
             String now_T3H="0";
             String now_PTY="0";
             String now_SKY="1";
 
             int k=0;
-            for(int num=0;num<24;num=num+3){
+            for(int num=0;num<8;num=num+3){
                 if(hour>=num && hour<(num+3)){
                     now_T3H = arr[k][2];
                     now_PTY = arr[k][3];
@@ -285,8 +291,11 @@ public class AlarmActivity extends Service {
                 }
                 k++;
             }
+
             now_Tem = now_T3H;
             bubble_temp.setText("기온 "+TMX_value[0]+"/"+TMN_value[0]);
+
+            Log.d("now",now_Tem);
 
             if(now_PTY.equals("0")) {
                 if (now_SKY.equals("맑음")) {
@@ -312,33 +321,36 @@ public class AlarmActivity extends Service {
             }
             bubble_weather.setText(now_weather);
 
+            for(int u=(hour/3); u<7;u++) {
+                if (arr[u][4].equals("1"))
+                    continue;
+                else {
+                    if (arr[u][3].equals("3") || arr[u][3].equals("7")) {
+                        SNOW = Boolean.TRUE;
+                        break;
+                    }
+                    else {
+                        RAIN = Boolean.TRUE;
+                        break;
+                    }
+                }
+            }
 
+            if(SNOW){ //눈
+                A_umbrella.setVisibility(View.INVISIBLE);
+                A_snowcat.setVisibility(View.VISIBLE);
+                SNOW = Boolean.FALSE;
+            }
+            else if(RAIN){ //비
+                A_umbrella.setVisibility(View.VISIBLE);
+                A_snowcat.setVisibility(View.INVISIBLE);
+                RAIN = Boolean.FALSE;
+            }
+            else{
+                A_umbrella.setVisibility(View.INVISIBLE);
+                A_snowcat.setVisibility(View.INVISIBLE);
+            }
 
-//            for(int u = (hour/3)-1;u<7;hour++){
-//                if(u<0)
-//                    continue;
-//                if(arr[u][4].equals("1"))
-//                    continue;
-//                else{
-//                    if(arr[u][3].equals("0"))
-//                        continue;
-//                    else if(arr[u][3].equals("3") || arr[u][3].equals("7"))
-//                        SNOW = Boolean.TRUE;
-//                    else
-//                        RAIN = Boolean.TRUE;
-//                }
-//
-//                if(SNOW){ //눈
-//                    alarm_umbrella.setVisibility(View.INVISIBLE);
-//                    alarm_snowcat.setVisibility(View.VISIBLE);
-//                    SNOW = Boolean.FALSE;
-//                }
-//                else if(RAIN){ //비
-//                    alarm_umbrella.setVisibility(View.VISIBLE);
-//                    alarm_snowcat.setVisibility(View.INVISIBLE);
-//                    RAIN = Boolean.FALSE;
-//                }
-//            }
         }
 
         private InputStream downloadUrl(String urlString) throws IOException {
@@ -360,11 +372,10 @@ public class AlarmActivity extends Service {
             if(locationY == 0)
                 locationY=127;
 
-            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day-1);
             String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
                     "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
-                    "numOfRows=225&pageNo=1&base_date=" +
-                    "20210225" +
+                    "numOfRows=71&pageNo=1&base_date=" +
+                    fn_Yesterday() +
                     "&base_time=2300&nx=" +
                     locationX + //x좌표
                     "&ny=" +
@@ -377,11 +388,10 @@ public class AlarmActivity extends Service {
             if(locationY == 0)
                 locationY=127;
 
-            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day);
             String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
                     "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
-                    "numOfRows=225&pageNo=1&base_date=" +
-                    today +
+                    "numOfRows=71&pageNo=1&base_date=" +
+                    fn_Yesterday() +
                     "&base_time=0200" +
                     "&nx=" +
                     locationX +
@@ -390,12 +400,6 @@ public class AlarmActivity extends Service {
             new ggetXML().execute(url2);
 
         }
-
-//        cat_view.setImageResource(R.drawable.ic_magic_cat);
-//        bubble_img.setImageResource(R.drawable.sunny);
-//        bubble_weather.setText(now_weather);
-//        bubble_temp.setText(now_Tem);
-
     }
 
 }

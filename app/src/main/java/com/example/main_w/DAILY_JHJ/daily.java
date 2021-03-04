@@ -26,19 +26,27 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class daily extends Fragment {
     public String[][] arr = new String[15][5];
-    Calendar now = Calendar.getInstance();
-
-    int year=now.get(Calendar.YEAR);
-    int month=now.get(Calendar.MONTH)+1;
-    int day=now.get(Calendar.DAY_OF_MONTH);
-    int hour=now.get(Calendar.HOUR_OF_DAY);
     String[] TMN_value = new String[2];
     String[] TMX_value = new String[2];
+
+    Calendar now = Calendar.getInstance();
+    int hour=now.get(Calendar.HOUR_OF_DAY);
+
+    public String fn_Yesterday() {
+        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE, -1);
+        String timedate = Format.format(cal.getTime());
+
+        return timedate;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -64,6 +72,7 @@ public class daily extends Fragment {
                 try {
 
                     int i=0;
+                    int tm=0;
                     String text = null;
                     Boolean T3H=Boolean.FALSE;
                     Boolean SKY=Boolean.FALSE;
@@ -142,14 +151,13 @@ public class daily extends Fragment {
                                         SKY=Boolean.FALSE;
                                     }
                                     else if(TMN){
-                                        TMN_value[0]=text;
+                                        TMN_value[tm]=text;
                                         TMN = Boolean.FALSE;
-                                        Log.d("tm",TMN_value[0]);
                                     }
                                     else if(TMX){
-                                        TMX_value[0]=text;
+                                        TMX_value[tm]=text;
                                         TMX = Boolean.FALSE;
-                                        Log.d("tm",TMX_value[0]);
+                                        tm++;
                                     }
                                     fcstValue = Boolean.FALSE;
                                 }
@@ -228,11 +236,10 @@ public class daily extends Fragment {
         }
 
         if(hour<23) {
-            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day-1);
             String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
                     "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                     "numOfRows=225&pageNo=1&base_date=" +
-                    "20210225" +
+                    fn_Yesterday() +
                     "&base_time=2300&nx=" +
                     locationX+
                     "&ny=" +
@@ -240,11 +247,10 @@ public class daily extends Fragment {
             new ggetXML().execute(url2);
         }
         else{
-            String today = String.valueOf(year)+"0"+String.valueOf(month)+String.valueOf(day);
             String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
                     "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                     "numOfRows=225&pageNo=1&base_date=" +
-                    today +
+                    fn_Yesterday() +
                     "&base_time=0200" +
                     locationX+
                     "&ny=" +
