@@ -22,16 +22,12 @@ import java.util.List;
 public class CityDialogFragment extends DialogFragment {
     public static String DIALOG_TAG = "cityDialog";
 
-    private static LocationDatabase locationDB;
     private static AlarmFragment alarmFragment;
+    private LocationDatabase locationDB;
     private String prevCountry;
     private String curCountry;
     private RecyclerView recyclerView;
     private LocationAdapter locationAdapter;
-
-    public static void setLocationDB(LocationDatabase db){
-        locationDB = db;
-    }
 
     public static void setAlarmFragment(AlarmFragment alarmFrag){
         alarmFragment = alarmFrag;
@@ -41,6 +37,7 @@ public class CityDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NO_TITLE, R.style.Dialog);
+        locationDB = LocationDatabase.getDatabases(getContext());
 
         Bundle bundle = getArguments();
         if(bundle != null)

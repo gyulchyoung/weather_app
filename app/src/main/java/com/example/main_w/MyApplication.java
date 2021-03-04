@@ -7,21 +7,12 @@ import android.media.AudioAttributes;
 import android.media.RingtoneManager;
 import android.os.Build;
 
-import com.example.main_w.location.LocationDatabase;
-import com.example.main_w.weather_alarm.AlarmDatabase;
-import com.example.main_w.weather_alarm.AlarmListActivity;
-
 public class MyApplication extends Application {
     public static final String CHANNEL_ID = "weather_alarm";
 
     @Override
     public void onCreate(){
         super.onCreate();
-        //알람 db 생성
-        AlarmListActivity.setAlarmDB(AlarmDatabase.getDatabases(this));
-        //애플리케이션 실행 시 location db 생성
-        CityDialogFragment.setLocationDB(LocationDatabase.getDatabases(this));
-
         createNotificationChannel();
     }
 

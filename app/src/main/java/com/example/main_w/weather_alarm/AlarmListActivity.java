@@ -35,7 +35,7 @@ public class AlarmListActivity extends AppCompatActivity implements CompoundButt
     private SlidingUpPanelLayout slidingLayout;
     private RecyclerView recyclerView;
     private AlarmAdapter alarmAdapter;
-    private static AlarmDatabase alarmDB;
+    private AlarmDatabase alarmDB;
     private Alarm alarm;
 
     private StringBuilder repeatStr;
@@ -59,18 +59,11 @@ public class AlarmListActivity extends AppCompatActivity implements CompoundButt
     private String mName, mRepeat, mTime;
     private List<Boolean> isDay = new ArrayList<>();
 
-    public static void setAlarmDB(AlarmDatabase db){
-        alarmDB = db;
-    }
-
-    public static AlarmDatabase getAlarmDatabase() {
-        return alarmDB;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_list);
+        alarmDB = AlarmDatabase.getDatabases(this);
         alarmAdapter = new AlarmAdapter(this, alarmDB);
 
         nameEdit = (EditText) findViewById(R.id.edit_name);
