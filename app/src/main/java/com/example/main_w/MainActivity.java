@@ -244,11 +244,7 @@ public class MainActivity<status> extends AppCompatActivity {
         rain_pb = findViewById(R.id.pb_rain);
         temp_pb_text = findViewById(R.id.pb_temp_text);
         temp_pb = findViewById(R.id.pb_temp);
-
-//        rain_pb.setProgress(20);
-//        temp_pb.setProgress(36);
-//        rain_pb_text.setText("20");
-//        temp_pb_text.setText("36");
+        
 
         SwipeRefreshLayout mainSwipe = (SwipeRefreshLayout) findViewById(R.id.main_swipe);
         mainSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
