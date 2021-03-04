@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="상세날씨"
+        android:text=" 상세날씨"
         android:fontFamily="@font/app_font"
         android:textStyle="bold"
         android:textSize="20dp"
@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="주간날씨"
+        android:text=" 주간날씨"
         android:fontFamily="@font/app_font"
         android:textStyle="bold"
         android:textSize="20dp"
