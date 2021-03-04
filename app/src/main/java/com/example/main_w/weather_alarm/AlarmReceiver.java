@@ -26,7 +26,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent){
         Bundle bundle = intent.getBundleExtra("bundle");
         Alarm alertAlarm = (Alarm) bundle.getSerializable("alarm");
-        AlarmDatabase alarmDB = AlarmListActivity.getAlarmDatabase();
+        AlarmDatabase alarmDB = AlarmDatabase.getDatabases(context);
 
         setAlertStr(context, alertAlarm.getWeather());
 
