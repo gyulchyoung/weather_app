@@ -251,7 +251,7 @@ public class AlarmListActivity extends AppCompatActivity implements CompoundButt
             if(isDay.get(6))   repeatStr.append(", 토");
             if(isDay.get(0))   repeatStr.append(", 일");
 
-            mRepeat = repeatStr.toString();
+            mRepeat = repeatStr.toString().substring(2);
         }
     }
 

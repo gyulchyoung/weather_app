@@ -80,7 +80,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.itemViewHold
     public class itemViewHolder extends RecyclerView.ViewHolder{
 
         private Alarm alarm;
-        private TextView time, name, repeat;
+        private TextView time, name, repeat, weather;
         private ImageView deleteBtn;
         private Switch onOff;
 
@@ -91,6 +91,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.itemViewHold
             super(itemView);
             time = (TextView) itemView.findViewById(R.id.time);
             name = (TextView) itemView.findViewById(R.id.name);
+            weather = (TextView) itemView.findViewById(R.id.weather);
             repeat = (TextView) itemView.findViewById(R.id.repeat);
             deleteBtn = (ImageView) itemView.findViewById(R.id.delete_btn);
             onOff = (Switch) itemView.findViewById(R.id.switch_enable);
@@ -126,9 +127,11 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.itemViewHold
             index = position;
 
             this.alarm = alarm;
+            String weatherStr = getWeatherString(alarm);
 
             time.setText(alarm.getTime());
             name.setText(alarm.getName());
+            weather.setText(weatherStr);
             repeat.setText(alarm.getRepeat());
             onOff.setChecked(alarm.getIsEnabled());
 
@@ -161,14 +164,33 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.itemViewHold
             });
         }
 
+        public String getWeatherString(Alarm alarm){
+            String str = ", ";
+
+            switch (alarm.getWeather()){
+                case 1:
+                    str += context.getString(R.string.alarm_rain);
+                    break;
+                case 2:
+                    str += context.getString(R.string.alarm_snow);
+                    break;
+                case 3:
+                    str += context.getString(R.string.alarm_typhoon);
+                    break;
+            }
+
+            return str;
+        }
+
         public void onDelete(){
             isCanClick = false;
             deleteBtn.setVisibility(View.VISIBLE);
 
             deleteBtn.animate().translationX(0).setDuration(300);
-            time.animate().translationX(100.0f).setDuration(300);
-            name.animate().translationX(100.0f).setDuration(300);
-            repeat.animate().translationX(100.0f).setDuration(300);
+            time.animate().translationX(110.0f).setDuration(300);
+            name.animate().translationX(110.0f).setDuration(300);
+            weather.animate().translationX(110.0f).setDuration(300);
+            repeat.animate().translationX(110.0f).setDuration(300);
             onOff.animate().alpha(0.0f).translationX(-50.0f).setDuration(300)
                 .withEndAction(new Runnable(){
                     @Override
@@ -185,6 +207,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.itemViewHold
             deleteBtn.animate().translationX(-200.0f).setDuration(300);
             time.animate().translationX(0).setDuration(300);
             name.animate().translationX(0).setDuration(300);
+            weather.animate().translationX(0).setDuration(300);
             repeat.animate().translationX(0).setDuration(300);
             onOff.animate().alpha(1.0f).translationX(0).setDuration(300);
         }
