@@ -63,6 +63,15 @@ public class AlarmActivity extends Service {
 
         return timedate;
     }
+    public String fn_today() {
+        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE, 0);
+        String timedate = Format.format(cal.getTime());
+
+        return timedate;
+    }
 
     @Override
     public void onCreate( ) {
@@ -391,7 +400,7 @@ public class AlarmActivity extends Service {
             String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
                     "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                     "numOfRows=71&pageNo=1&base_date=" +
-                    fn_Yesterday() +
+                    fn_today() +
                     "&base_time=0200" +
                     "&nx=" +
                     locationX +

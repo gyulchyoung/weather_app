@@ -53,6 +53,16 @@ public class MainActivity<status> extends AppCompatActivity {
         return timedate;
     }
 
+    public String fn_today() {
+        SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE, 0);
+        String timedate = Format.format(cal.getTime());
+
+        return timedate;
+    }
+
     private AppBarConfiguration mAppBarConfiguration;
 
     class ggetXML extends AsyncTask<String, Void, String> {
@@ -269,7 +279,7 @@ public class MainActivity<status> extends AppCompatActivity {
                     String url2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?" +
                             "serviceKey=kVYcCisbHyjiLHSoknw1iZbhenW6Glc2mM4hfGf1EeIHjXagq6P9g98eMXs6lFGtlksA74tis6Z677Ol%2FjiHrw%3D%3D&" +
                             "numOfRows=225&pageNo=1&base_date=" +
-                            fn_Yesterday() +
+                            fn_today() +
                             "&base_time=0200" +
                             "&nx=" +
                             locationX +
