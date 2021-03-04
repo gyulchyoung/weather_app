@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -44,7 +43,10 @@ public class CityDialogFragment extends DialogFragment {
         setStyle(STYLE_NO_TITLE, R.style.Dialog);
 
         Bundle bundle = getArguments();
-        prevCountry = bundle.getString("prevCountry");
+        if(bundle != null)
+            prevCountry = bundle.getString("prevCountry");
+        else
+            prevCountry = PreferenceManager.getString(getContext(), "locationCountry");
     }
 
     @Override
@@ -54,7 +56,6 @@ public class CityDialogFragment extends DialogFragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.location_list);
 
         curCountry = PreferenceManager.getString(context, "locationCountry");
-        Toast.makeText(context, curCountry, Toast.LENGTH_SHORT).show();
         if(curCountry.equals(""))
             curCountry = AlarmFragment.DEFAULT_COUNTRY;
 

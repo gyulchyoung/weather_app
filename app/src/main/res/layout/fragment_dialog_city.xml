@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,9 +15,8 @@
         android:paddingBottom="50dp"
         android:paddingStart="55dp"
         android:paddingEnd="55dp"
-        android:background="@drawable/dialog_background"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/dialog_background" >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/location_list"

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.main_w.CityDialogFragment;
-import com.example.main_w.MainActivity;
 import com.example.main_w.PreferenceManager;
 import com.example.main_w.R;
 
@@ -69,6 +68,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.itemVi
                         PreferenceManager.setString(view.getContext(),"locationCityCode", location.cityCode);
                     
                     PreferenceManager.setString(view.getContext(), "locationCountryCode", location.countryCode);
+                    PreferenceManager.setString(view.getContext(), "locationCountry", location.country);
                     PreferenceManager.setString(view.getContext(), "locationCity", location.city);
                     PreferenceManager.setInt(view.getContext(), "locationX", location.axisX);
                     PreferenceManager.setInt(view.getContext(), "locationY", location.axisY);

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -83,12 +82,6 @@ public class CountryDialogFragment extends DialogFragment implements View.OnClic
             cityDialog.setArguments(bundle);
             cityDialog.show(fm, CityDialogFragment.DIALOG_TAG);
         }
-    }
-
-    @Override
-    public void onCancel(@NonNull DialogInterface dialog) {
-        super.onCancel(dialog);
-        Toast.makeText(getContext(), "cancel", Toast.LENGTH_SHORT).show();
     }
 
     @Override
