@@ -7,8 +7,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.main_w.weather_alarm.Converter;
-
 @Database(entities = {Alarm.class}, version = 1, exportSchema = false)
 @TypeConverters({Converter.class})
 public abstract class AlarmDatabase extends RoomDatabase {

@@ -17,9 +17,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
-        //알람 db 생성 (아직 적용 안 함)
+        //알람 db 생성
         AlarmListActivity.setAlarmDB(AlarmDatabase.getDatabases(this));
-        //애플리케이션 실행 시 location.db 생성
+        //애플리케이션 실행 시 location db 생성
         CityDialogFragment.setLocationDB(LocationDatabase.getDatabases(this));
 
         createNotificationChannel();
