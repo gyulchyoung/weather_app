@@ -15,7 +15,7 @@
 
      테두리 설정: 두께, 색상
     <stroke
-        android:width="3.5dp"
+        android:width="5.5dp"
         android:color="@color/navy" />
 
     <corners
