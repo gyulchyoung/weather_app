@@ -1,75 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="83dp"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="82dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/recycler_background"
         android:orientation="vertical"
-        android:padding="3dp"
-        android:background="@drawable/recycler_background">
+        android:padding="3dp">
 
         <TextView
             android:id="@+id/day_textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="화요일"
-            android:gravity="center"
+            android:layout_height="0dp"
             android:layout_marginTop="15dp"
+            android:layout_weight="1"
             android:fontFamily="@font/app_font"
-            android:textSize="16dp"/>
+            android:gravity="center"
+            android:text="화요일"
+            android:textSize="16dp" />
+
         <ImageView
             android:id="@+id/weather_imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sunny"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/sunny" />
+
         <TextView
             android:id="@+id/weather_textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:fontFamily="@font/app_font"
+            android:gravity="center"
             android:text="맑음"
-            android:textSize="14dp"
-            android:gravity="center" />
+            android:textSize="14dp" />
+
         <TextView
             android:id="@+id/temp_textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
             android:fontFamily="@font/app_font"
-            android:text="-3/-13"
-            android:textSize="14dp"
             android:gravity="center"
-            android:layout_marginTop="7dp"/>
+            android:text="-3/-13"
+            android:textSize="14dp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp">
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
             <ImageView
                 android:id="@+id/rain_prob_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxHeight="14dp"
+                android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
                 android:src="@drawable/item_rain_prop"
-                android:layout_centerVertical="true" />
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/rain_prob_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/rain_prob_img"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/rain_prob_img"
                 android:fontFamily="@font/app_font"
                 android:text="10"
-                android:textSize="14dp"
-                android:layout_toRightOf="@+id/rain_prob_img"
-                android:layout_alignBaseline="@+id/rain_prob_img"/>
+                android:textSize="14dp" />
         </RelativeLayout>
 
     </LinearLayout>
