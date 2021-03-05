@@ -303,7 +303,7 @@ public class AlarmActivity extends Service {
                     bubble_img.setImageResource(R.drawable.sunny);
                 }
                 else if (now_SKY.equals("구름많음")) {
-                    now_weather = "현재 날씨는 구름이 많아요!";
+                    now_weather = "지금 구름이 많아요!";
                     bubble_img.setImageResource(R.drawable.cloud);
                 }
                 else {
