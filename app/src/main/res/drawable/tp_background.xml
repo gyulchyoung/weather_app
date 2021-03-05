@@ -8,20 +8,20 @@
 
     <!-- 테두리 내부 여백 설정 -->
     <padding
-        android:bottom="8dp"
-        android:left="8dp"
-        android:right="8dp"
-        android:top="8dp" />
+        android:bottom="10dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="10dp" />
 
-    <!-- 테두리 설정: 두께, 색상 -->
+     테두리 설정: 두께, 색상
     <stroke
-        android:width="2dp"
+        android:width="3.5dp"
         android:color="@color/navy" />
 
     <corners
-        android:bottomLeftRadius="12dp"
-        android:bottomRightRadius="12dp"
-        android:topLeftRadius="12dp"
-        android:topRightRadius="12dp" />
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp"
+        android:topLeftRadius="30dp"
+        android:topRightRadius="30dp" />
 
 </shape>

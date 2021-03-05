@@ -20,25 +20,26 @@
             style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="25dp"
             android:background="@android:color/transparent"
             android:text="@string/select_time"
             android:textSize="18sp" />
 
         <TimePicker
-            android:id="@+id/main_alarm_timepicker"
-            android:layout_width="220dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:background="@color/blue"
-            android:timePickerMode="spinner" />
+                android:id="@+id/main_alarm_timepicker"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:background="@drawable/tp_background"
+            android:padding="25dp"
+                android:timePickerMode="spinner" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="18dp">
+            android:layout_marginTop="13dp">
 
             <TextView
                 android:id="@+id/time_reg_button"
@@ -50,8 +51,8 @@
                 android:background="@drawable/ic_time_set_btn"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="23dp"
+                android:paddingBottom="23dp"
                 android:text="@string/regist"
                 android:textSize="14sp" />
 
@@ -65,8 +66,8 @@
                 android:background="@drawable/ic_time_set_btn"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="23dp"
+                android:paddingBottom="23dp"
                 android:text="@string/unregist"
                 android:textSize="14sp" />
         </FrameLayout>
@@ -85,7 +86,7 @@
             style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="25dp"
             android:text="@string/select_location"
             android:textSize="18sp" />
 
@@ -93,23 +94,23 @@
             android:id="@+id/current_country"
             style="@style/TextNormal"
             android:layout_width="160dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:background="@drawable/location_set_btn"
             android:gravity="center"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/current_city"
             style="@style/TextNormal"
             android:layout_width="160dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/location_set_btn"
             android:gravity="center"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

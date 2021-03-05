@@ -1,10 +1,12 @@
 package com.example.main_w;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.fragment.app.DialogFragment;
@@ -26,6 +28,7 @@ public class HelpDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_dialog_help, container, false);
         content = (LinearLayout) view.findViewById(R.id.help_content);
+//        ImageView help_img=view.findViewById(R.id.help_img);
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
