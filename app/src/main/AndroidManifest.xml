@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.main_w">
+    package="com.example.Magic_CnyangE">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -14,15 +14,15 @@
     <application
         android:icon="@mipmap/ic_weather_app"
         android:roundIcon="@mipmap/ic_weather_app_round"
-        android:name=".MyApplication"
+        android:name="com.example.Magic_CnyangE.MyApplication"
         android:allowBackup="true"
-        android:label="@string/app_name"
+        android:label="씨냥이의 날씨구슬"
         android:supportsRtl="true"
         android:theme="@style/Theme.Main_W.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:name="com.example.Magic_CnyangE.MainActivity"
+            android:label="씨냥이의 날씨구슬"
             android:theme="@style/Theme.Main_W.NoActionBarMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".weather_alarm.AlarmAlertActivity"
+            android:name="com.example.Magic_CnyangE.weather_alarm.AlarmAlertActivity"
             android:launchMode="singleTask"
             android:taskAffinity=""
             android:excludeFromRecents="true"
@@ -39,27 +39,27 @@
             android:showOnLockScreen="true">
         </activity>
         <activity
-            android:name=".weather_alarm.AlarmListActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".specific_weather">
+            android:name="com.example.Magic_CnyangE.weather_alarm.AlarmListActivity"
+            android:parentActivityName="com.example.Magic_CnyangE.MainActivity" />
+        <activity android:name="com.example.Magic_CnyangE.specific_weather">
         </activity>
 
         <service
-            android:name=".alarm.AlarmService"
+            android:name="com.example.Magic_CnyangE.alarm.AlarmService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW" />
 
-        <receiver android:name=".alarm.AlarmReceiver" />
+        <receiver android:name="com.example.Magic_CnyangE.alarm.AlarmReceiver" />
 
         <service
-            android:name=".alarm.AlarmActivity"
+            android:name="com.example.Magic_CnyangE.alarm.AlarmActivity"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW" />
 
         <receiver
-            android:name=".DeviceBootReceiver"
+            android:name="com.example.Magic_CnyangE.DeviceBootReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -67,7 +67,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".weather_alarm.AlarmReceiver"
+        <receiver android:name="com.example.Magic_CnyangE.weather_alarm.AlarmReceiver"
             android:exported="false" />
     </application>
 

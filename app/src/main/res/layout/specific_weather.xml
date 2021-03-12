@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.main_w.DAILY_JHJ.daily"
+        android:name="com.example.Magic_CnyangE.DAILY_JHJ.daily"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/weekly_weather"
-        android:name="com.example.main_w.weekly.WeeklyFragment"
+        android:name="com.example.Magic_CnyangE.weekly.WeeklyFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6" />

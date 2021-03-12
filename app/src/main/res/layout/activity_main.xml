@@ -121,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="315dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="25dp"
                     android:src="@drawable/ic_magic_cat" />
 
                 <ImageButton
@@ -204,7 +204,7 @@
             android:id="@+id/fragment_a"
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:name="com.example.main_w.alarm.AlarmFragment" />
+            android:name="com.example.Magic_CnyangE.alarm.AlarmFragment" />
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
