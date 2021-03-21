@@ -105,7 +105,7 @@ public class WeeklyFragment extends Fragment {
         adapter = new WeeklyMainAdapter();
         recyclerView.setAdapter(adapter);
 
-        initData();
+
 
         String tempCode = PreferenceManager.getString(getContext(), "locationCityCode");
         String weatherCode = PreferenceManager.getString(getContext(), "locationCountryCode");
@@ -116,6 +116,7 @@ public class WeeklyFragment extends Fragment {
             tempCode = "11B10101";
             weatherCode = "11B00000";
         }
+        initData();
 
         Call<WeeklyModel_weather> getWeatherInstance = weeklyRetrofitFactory_weather.getWeekly_weatherApi()
                 .getList(API_KEY, "1", weatherCode, date+set_time, "JSON");//하루전꺼 조사해서 3,4,5,6이면 당일기준 2,3,4,5 시간수정

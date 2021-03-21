@@ -124,41 +124,45 @@
                     android:layout_marginRight="25dp"
                     android:src="@drawable/ic_magic_cat" />
 
-                <ImageButton
-                    android:id="@+id/specific_weather"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:adjustViewBounds="true"
-                    android:layout_marginBottom="30dp"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_toLeftOf="@id/clock"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_weather"
-                    android:layout_marginRight="45dp" />
+                    android:layout_marginBottom="30dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="35dp">
 
-                <ImageButton
-                    android:id="@+id/clock"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:scaleType="centerInside"
-                    android:layout_toLeftOf="@id/help"
-                    android:layout_alignTop="@+id/specific_weather"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_alarm_clock" />
+                    <ImageButton
+                        android:id="@+id/specific_weather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:scaleType="centerInside"
+                        android:background="@android:color/transparent"
+                        android:layout_alignParentLeft="true"
+                        android:src="@drawable/ic_weather" />
 
-                <ImageButton
-                    android:id="@+id/help"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:scaleType="centerInside"
-                    android:layout_marginTop="3dp"
-                    android:background="@android:color/transparent"
-                    android:layout_alignTop="@+id/specific_weather"
+                    <ImageButton
+                        android:id="@+id/clock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="85dp"
+                        android:scaleType="centerInside"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingLeft="11dp"
+                        android:background="@android:color/transparent"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_alarm_clock" />
 
-                    android:src="@drawable/ic_help"
-                    android:layout_marginLeft="38dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dp"/>
+                    <ImageButton
+                        android:id="@+id/help"
+                        android:layout_width="wrap_content"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_help" />
+                </RelativeLayout>
+
 
                 <ImageView
                     android:id="@+id/snowcat"
